@@ -1,0 +1,3 @@
+projects.forEach((val, ind) => {
+	
+})

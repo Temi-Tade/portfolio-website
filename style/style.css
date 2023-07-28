@@ -1,0 +1,173 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+transition: .75s;
+letter-spacing: 1.2px
+}
+
+:root{
+--primary-color: #333;
+--text-color-light: #eee;
+--fsize-sm: .75rem;
+--fsize-med: 1rem;
+--fsize-l1: 1.25rem;
+--fsize-l2: 1.5rem;
+--text-thin: 300;
+}
+
+html{
+font-family: "Ubuntu", sans-serif;
+background: var(--primary-color);
+color: var(--text-color-light);
+scroll-behavior: smooth;
+position: relative;
+accent-color: #ccc;
+}
+
+main{
+	padding-top: 5rem;
+}
+
+header{
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding: 2rem;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+height: 3rem;
+background: var(--text-color-light);
+}
+
+a{
+text-decoration: none;
+color: var(--primary-color);
+
+}
+
+header img{
+	display: block;
+}
+
+nav ul{
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+
+#socials_nav a{
+font-size: 2rem;
+width: 3rem;
+height: 3rem;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+#socials_nav a:hover, #socials_nav a:focus{
+	transform: rotateZ(360deg) scale(1.2);
+}
+
+#page_links{
+	width: 50%;
+	height: 3rem;
+}
+
+#page_links ul{
+	height: 100%;
+}
+
+#page_links li{
+	height: 100%;
+}
+
+#page_links ul li a {
+	text-transform: uppercase;
+	font-weight: bold;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 .5rem;
+}
+
+#page_links a:hover, #page_links a:focus {
+	background: transparent;
+	color: var(--primary-color);
+	transform: scale(1.2)
+}
+
+#meet_me{
+	padding: 1rem;
+}
+
+#text_img{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#meet_me div:not(div#text_img){
+	width: 45%;
+	padding: .75rem;
+	border: 1px solid red;
+}
+
+#meet_me h2{
+	text-align: right;
+	padding: .25rem;
+	width: 90%;
+	margin: .5rem auto;
+}
+
+#dynamic_text{
+	font-size: var(--fsize-l2);
+	font-weight: var(--text-thin);
+	height: 15rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#skills_projects{
+	display: flex;
+	padding: 1rem;
+	justify-content: center;
+}
+
+#skills_projects div{
+	width: 45%;
+	padding: .5rem;
+}
+
+#skills h3{
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#skills p{
+	margin: .5rem auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5rem;
+	width: 80%;
+}
+
+#skills p *{
+	display: block;
+}
+
+#skills p progress{
+	block-size: 2.5rem;
+	cursor: pointer;
+}
+
+#skills p progress:hover{
+	accent-color: #333;
+}
