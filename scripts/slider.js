@@ -2,14 +2,17 @@ let i = 0;
 
 let next = () => {
 	i++;
-	dyn_text.innerHTML = messages[i];
-	if (i > messages.length - 1) {
+	slide(dyn_text)
+	if (i >= messages.length) {
 		i = 0;
 		dyn_text.innerHTML = messages[i];
 	}
+	slide(dyn_text)
+	dyn_text.innerHTML = messages[i];
 }
-let j = setInterval(() => {
-	dyn_text.animate(
+
+let slide = (el) => {
+	el.animate(
 		{
 			transform: ['translateX(-50px)', 'translateX(0)'],
 			opacity: [0,1],
@@ -18,6 +21,11 @@ let j = setInterval(() => {
 			duration: 700,
 		}
 	)
+}
+
+
+setInterval(() => {
+	slide(dyn_text)
 }, 7000);
 
 setInterval(next, 7000);

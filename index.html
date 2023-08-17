@@ -15,7 +15,7 @@
 <body>
 <main>
 <header>
-<img src="./assets/images/TEEE.png" alt="logo" width="80">
+<img src="./assets/images/TEEE.png" alt="logo" width="80" lazyload>
 
 <nav id="page_links">
 	<ul type="none">
@@ -71,6 +71,14 @@
 	
 	<div id="projects">
 		<h3>projects</h3>
+		<div id="p_names">
+			<a href="https://password-checker-ver.vercel.app/" title="Click to view the project"><img src="./assets/images/pass_check.png" lazyload alt="Pass Check"></a>
+		</div>
+
+		<div id="toggleBtns">
+			<button id="prev_prj" onclick="prev_prj()"><<</button>
+			<button id="next_prj" onclick="next_prj()">>></button>
+		</div>
 	</div>
 </section>
 
