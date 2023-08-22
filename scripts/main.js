@@ -3,7 +3,7 @@ const skillsElement = document.querySelector("#skills")
 const projectsElement = document.querySelector("#p_names") 
 const imageElement = document.querySelector("#projects img")
 
-const messages = ['I am Temi...', '...I am a front end web developer, I have a strong passion for knowing more about technology as I believe it is the future of humanity and i want to contribute to making the future safe and better for all...', '...I enjoy employing logic to solve problems and of course also being called a programmer ;)...', '...grab your popcorn, have your seats, strap yourself in... welcome to my world!']
+const messages = ['My name is Temi...', '...I am a front end web developer, I have a strong passion for knowing more about technology as I believe it is the future of humanity and i want to contribute to making the future safe and better for all...', '...I enjoy employing logic to solve problems and of course also being called a programmer ;)...', '...grab your popcorn, have your seats, strap yourself in... welcome to my world!']
 
 const skills = {
 	name: ["html", "css", "javascript", "python", "command line", ],
