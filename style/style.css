@@ -44,7 +44,8 @@ left: 0;
 right: 0;
 height: 3rem;
 background: var(--primary-color);
-box-shadow: 0 0 2px var(--text-color-dark)
+box-shadow: 0 0 2px var(--text-color-dark);
+z-index: 10
 }
 
 a{
@@ -55,6 +56,7 @@ color: var(--text-color-light);
 button{
 background: transparent;
 border: 0;
+cursor: pointer;
 }
 
 header img{
@@ -107,16 +109,29 @@ align-items: center;
 a:hover, a:focus {
 	background: var(--primary-color);
 	color: var(--text-color-light);
+	border-bottom: 2px solid var(--text-color-light)
+}
+
+#image{
+	display: flex;
+	justify-content: center
+}
+
+#image img{
+	border-radius: 50%;
+	border-bottom: 4px solid var(--text-color-light);
 }
 
 #meet_me{
 	padding: 1rem;
+	height: auto;
 }
 
 #text_img{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: auto;
 }
 
 #meet_me div:not(div#text_img){
@@ -128,11 +143,16 @@ a:hover, a:focus {
 #dynamic_text{
 	font-size: var(--fsize-l2);
 	font-weight: var(--text-thin);
-	height: 15rem;
+	height: inherit;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	text-align: center;
+}
+
+#dynamic_text p{
+	height: auto;
 }
 
 #pic_bio_cv{
@@ -153,6 +173,12 @@ flex-direction: column;
 	text-align: center;
 	text-transform: uppercase;
 	border-radius: 1.75rem;
+}
+
+#mycv a:hover, #mycv a:focus {
+	background: var(--primary-color);
+	color: var(--text-color-light);
+	border: 1.75px solid var(--text-color-light);
 }
 
 #skills_projects{
@@ -194,7 +220,6 @@ flex-direction: column;
 
 #projects{
 	position: relative;
-	height: 21rem
 }
 
 #projects #p_names{
@@ -223,7 +248,7 @@ flex-direction: column;
 	justify-content: space-between;
 	margin: auto;
 	position: absolute;
-	bottom: 0;
+	bottom: 10rem;
 	left: 0;
 	right: 0;
 	width: 100%;
@@ -235,20 +260,20 @@ position: relative;
 
 #projects img{
 width: 100%;
-position: absolute;
-top: 0;
-left: 0;
-bottom: 0;
-right: 0;
+
 }
 
 #projects img:hover{
 filter: blur(1px);
-box-shadow: 0 0 2px 2px #777
+box-shadow: 0 0 2px 2px #7777;
+}
+
+#projects a:hover, #projects a:focus{
+	border: 0;
 }
 
 #toggleBtns button:hover{
-	transform: translateX(.25rem);
+	transform: scale(1.5);
 }
 
 #to_top{
@@ -276,6 +301,42 @@ box-shadow: 0 0 2px 2px #777
 	border-radius: inherit;
 }
 
+footer{
+	padding: .75rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background: var(--text-color-light);
+	margin-top: 1rem;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+footer small{
+	color: var(--primary-color);
+	font-size: var(--fsize-l1);
+}
+
+footer ul{
+	display: flex;
+	width: 10rem;
+	justify-content: space-between;
+	padding: .5rem;
+}
+
+footer ul li a{
+	color: var(--primary-color);
+	padding: .25rem;
+	border-radius: 50%;
+	font-size: var(--fsize-l1);
+}
+
+footer ul li a:hover, footer ul li a:focus{
+	border: 1px solid var(--primary-color);
+}
 @media only screen and (max-width: 600px) {
 	.mobile{
 		display: block;
@@ -303,7 +364,7 @@ box-shadow: 0 0 2px 2px #777
 	}
 	
 	.menu button{
-		font-size: var(--fsize-l2);
+		font-size: 2rem;
 		color: var(--text-color-light);
 	}
 	
@@ -396,9 +457,30 @@ box-shadow: 0 0 2px 2px #777
 	
 	#skills_projects{
 		display: block;
+		padding: .5rem;
+	}
+
+	#skills_projects div{
+		width: auto;
+		padding: .5rem;
+	}
+
+	#projects #toggleBtns{
+		display: flex;
+		justify-content: space-between;
+		margin: auto;
+		position: absolute;
+		bottom: -2rem;
+		left: 0;
+		right: 0;
+		width: 50%;
 	}
 	
 	.open{
 		max-height: 100rem;
+	}
+	
+	footer{
+		position: static;
 	}
 }

@@ -5,16 +5,16 @@ let next = () => {
 	slide(dyn_text)
 	if (i >= messages.length) {
 		i = 0;
-		dyn_text.innerHTML = messages[i];
+		dyn_text.innerHTML = messages[i].toUpperCase();
 	}
 	slide(dyn_text)
-	dyn_text.innerHTML = messages[i];
+	dyn_text.innerHTML = messages[i].toUpperCase();
 }
 
 let slide = (el) => {
 	el.animate(
 		{
-			transform: ['translateX(-50px)', 'translateX(0)'],
+			transform: ['translateX(-50px)', 'translateX(0)',],
 			opacity: [0,1],
 		},
 		{
@@ -26,6 +26,6 @@ let slide = (el) => {
 
 setInterval(() => {
 	slide(dyn_text)
-}, 7000);
+}, 4500);
 
-setInterval(next, 7000);
+setInterval(next, 4500);
