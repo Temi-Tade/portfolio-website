@@ -1,21 +1,21 @@
 *{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-transition: 1s;
-letter-spacing: 1.2px;
-line-height: 1.3
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	transition: 1s;
+	letter-spacing: 1.2px;
+	line-height: 1.3
 }
 
 :root{
---primary-color: #EEE;
---text-color-light: #2564FF;
---text-color-dark: #333;
---fsize-sm: .75rem;
---fsize-med: 1rem;
---fsize-l1: 1.25rem;
---fsize-l2: 1.5rem;
---text-thin: 300;
+	--primary-color: #EEE;
+	--text-color-light: #2564FF;
+	--text-color-dark: #333;
+	--fsize-sm: .75rem;
+	--fsize-med: 1rem;
+	--fsize-l1: 1.25rem;
+	--fsize-l2: 1.5rem;
+	--text-thin: 300;
 }
 
 .mobile{
@@ -23,34 +23,32 @@ line-height: 1.3
 }
 
 html{
-font-family: "Ubuntu", sans-serif;
-background: var(--primary-color);
-color: var(--text-color-dark);
-scroll-behavior: smooth;
+	font-family: "Ubuntu", sans-serif;
+	background: var(--primary-color);
+	color: var(--text-color-dark);
+	scroll-behavior: smooth;
+	height: auto;
+	border: 2px solid red;
 }
 
-main{
-	padding-top: 5rem;
+body{
+	border: 1px solid;
 }
 
 header{
-display: flex;
-justify-content: space-around;
-align-items: center;
-padding: 2rem;
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-height: 3rem;
-background: var(--primary-color);
-box-shadow: 0 0 2px var(--text-color-dark);
-z-index: 10
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: .5rem;
+	height: auto;
+	background: var(--primary-color);
+	box-shadow: 0 0 2px var(--text-color-dark);
+	z-index: 10
 }
 
 a{
-text-decoration: none;
-color: var(--text-color-light);
+	text-decoration: none;
+	color: var(--text-color-light);
 }
 
 button{
@@ -302,17 +300,13 @@ box-shadow: 0 0 2px 2px #7777;
 }
 
 footer{
-	padding: .75rem;
+	height: 1.5rem;
+	padding: .5rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	background: var(--text-color-light);
-	margin-top: 1rem;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
 }
 
 footer small{
@@ -337,6 +331,7 @@ footer ul li a{
 footer ul li a:hover, footer ul li a:focus{
 	border: 1px solid var(--primary-color);
 }
+
 @media only screen and (max-width: 600px) {
 	.mobile{
 		display: block;
