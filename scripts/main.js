@@ -1,10 +1,8 @@
-const dyn_text = document.querySelector("#dynamic_text p")
+const dyn_text = document.querySelector("#dynamic_text_wrap p span")
 const skillsElement = document.querySelector("#skills")
 const projectsElement = document.querySelector("#p_names") 
 const imageElement = document.querySelector("#projects img")
 const backToTop = document.querySelector('#to_top')
-
-const messages = ['Front End Web developer', 'programmer', 'open source contributor', 'graphics designer', 'content writer']
 
 const skills = {
 	name: ["html", "css", "javascript", "python", "command line", "graphics design"],
@@ -16,8 +14,6 @@ const projects = ["https://password-checker-ver.vercel.app/", "https://temi-tade
 const projectNames = ["password checker", "love calculator", "countdown timer", "turbo clickz",]
 						
 const images = ["./assets/images/pass_check.png", "./assets/images/love_calc.png", "./assets/images/count_down.png", "./assets/images/turbo.jpg"]
-
-dyn_text.innerHTML = messages[0].toUpperCase()
 
 window.addEventListener('scroll', (e) => {
 	if (document.body.getBoundingClientRect().y <= -25){

@@ -28,11 +28,6 @@ html{
 	color: var(--text-color-dark);
 	scroll-behavior: smooth;
 	height: auto;
-	border: 2px solid red;
-}
-
-body{
-	border: 1px solid;
 }
 
 header{
@@ -138,7 +133,7 @@ a:hover, a:focus {
 	margin: auto;
 }
 
-#dynamic_text{
+#dynamic_text_wrap{
 	font-size: var(--fsize-l2);
 	font-weight: var(--text-thin);
 	height: inherit;
@@ -147,10 +142,18 @@ a:hover, a:focus {
 	align-items: center;
 	justify-content: space-between;
 	text-align: center;
+	text-transform: uppercase;
 }
 
-#dynamic_text p{
+#dynamic_text_wrap p{
 	height: auto;
+}
+
+#dynamic_text {
+	background-color: var(--text-color-dark);
+	color: var(--primary-color);
+	padding: .5rem;
+	border-radius: .5rem;
 }
 
 #pic_bio_cv{
@@ -300,7 +303,6 @@ box-shadow: 0 0 2px 2px #7777;
 }
 
 footer{
-	height: 1.5rem;
 	padding: .5rem;
 	display: flex;
 	flex-direction: column;
