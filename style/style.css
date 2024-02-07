@@ -182,6 +182,17 @@ flex-direction: column;
 	border: 1.75px solid var(--text-color-light);
 }
 
+#tool_list{	
+	display: grid;
+	grid-template-columns: 3fr 3fr 3fr;
+	padding: .5rem
+}
+
+#tool_list li{
+	font-size: 3rem;
+	padding: .5rem;
+}
+
 #skills_projects{
 	display: flex;
 	padding: 1rem;

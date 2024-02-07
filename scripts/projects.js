@@ -29,4 +29,3 @@ let next_prj = () => {
 }
 
 setInterval(next_prj, 7000);
-
