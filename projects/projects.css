@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#search_wrap{
+    padding: .75rem;
+}
+
+input{
+    background-color: transparent;
+    border: 2px solid var(--text-color-light);
+    padding: .65rem;
+    font-size: var(--fsize-med);
+    font-family: "Ubuntu", sans-serif;
+    border-radius: .5rem;
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+li{
+    padding: .75rem;
+    margin: .5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li:hover{
+    transform: scale(.975);
+}
+
+li .links{
+    display: flex;
+    text-transform: uppercase;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: .25rem;
+}
+
+.links a{
+    background-color: var(--text-color-light);
+    padding: .5rem;
+    color: var(--primary-color);
+    border-radius: .5rem;
+}
+
+#no-result{
+    display: none;
+    padding: 1rem;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    font-size: xx-large;
+}
+
+#no-result i{
+    font-size: 5rem;
+}
+
+/* mobile, load while waitimg */
