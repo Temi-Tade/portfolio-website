@@ -9,7 +9,7 @@ window.addEventListener('scroll', (e) => {
 	}
 })
 
-if (window.innerWidth < 600) {
+if (window.innerWidth < 742) {
 	document.querySelector("#ham_btn").onclick = () => {
 		document.querySelector("header nav").classList.toggle('open')
 		document.querySelector("header #socials_nav").classList.toggle('open')

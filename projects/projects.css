@@ -20,12 +20,12 @@ input{
     display: block;
 }
 
-ul{
+#p_list ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-li{
+#p_list ul li{
     padding: .75rem;
     margin: .5rem;
     cursor: pointer;
@@ -67,4 +67,27 @@ li .links{
     font-size: 5rem;
 }
 
+a.active{
+    border-bottom: 1.5px solid var(--text-color-light);
+}
+
+@media screen and (max-width: 742px) {
+    #p_list ul{
+        display: block;
+    }
+
+    li img{
+        width: 80dvw;
+    }
+}
+
+@media screen and (max-width: 1092px) {
+    #p_list ul{
+        display: block;
+    }
+
+    li img{
+        width: 80dvw;
+    }
+}
 /* mobile, load while waitimg */

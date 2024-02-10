@@ -155,6 +155,7 @@ a:hover, a:focus {
 	color: var(--primary-color);
 	padding: .75rem;
 	border-radius: .5rem 0;
+	box-shadow: 1px 1px 4px 1px #333;
 }
 
 #pic_bio_cv{
@@ -346,7 +347,7 @@ footer ul li a:hover, footer ul li a:focus{
 	border: 1px solid var(--primary-color);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 742px) {
 	.mobile{
 		display: block;
 	}

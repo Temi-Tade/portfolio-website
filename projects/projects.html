@@ -12,10 +12,48 @@
 </head>
 <body>
     <header>
-        <h1>My Projects</h1>
+        <img src="../assets/images/TEEE.png" alt="logo" width="80" lazyload>
+
+        <div class="mobile menu">
+            <button class="fa-solid fa-bars" id="ham_btn"></button>
+        </div>
+
+        <nav id="page_links">
+            <ul type="none">
+                <li><a href="#home">home</a></li>
+                <li><a href="#skills">skills</a></li>
+                <li><a href="./projects/projects.html" inert class="active">projects</a></li>
+                <li><a href="#contacts">contacts</a></li>
+                <li><a href="https://tenderluxe.blogspot.com">blog</a></li>
+            </ul>
+        </nav>
+
+        <nav id="socials_nav">
+            <ul type="none">
+                <li>
+                    <a href="https://github.com/Temi-Tade" class="fab fa-github"></a>
+                </li>
+
+                <li>
+                    <a href="https://instagram.com/temi_tenderluxe?igshid=ZDc4ODBmNjlmNQ==" class="fab fa-instagram"></a>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/Temi_tade2805?s=09" class="fab fa-twitter"></a>
+                </li>
+
+                <li>
+                    <a href="https://www.linkedin.com/in/temiloluwa-akintade-4b6798254" class="fab fa-linkedin"></a>
+                </li>
+
+                <li>
+                    <a href="https://api.whatsapp.com/send?phone=2349063084231?text=message..." class="fab fa-whatsapp"></a>
+                </li>
+            </ul>
+        </nav> 
     </header>
 
-    <section id="wrap">
+    <section id="wrap" class="error">
         <div id="search_wrap">
             <input type="text" id="search_field" onkeyup="searchProjects(this.value)" placeholder="Search...">
         </div>
