@@ -56,7 +56,7 @@
 			</header>
 
 			<div id="to_top">
-				<button class="fas fa-caret-up"></button>
+				<button class="fas fa-caret-up" title="Back To Top"></button>
 			</div>
 
 			<section id="meet_me">
@@ -106,12 +106,9 @@
 				
 				<div id="projects">
 					<h3>my projects</h3>
-					<div id="p_names">
-						<a href="https://password-checker-ver.vercel.app/" title="Click to view the project"><img src="./assets/images/pass_check.png" lazyload alt="Pass Check"></a>
-					</div>
-					<div id="toggleBtns">
-						<button id="prev_prj" onclick="prev_prj()" class="fas fa-caret-left" title="Previous Project"></button>
-						<button id="next_prj" onclick="next_prj()" class="fas fa-caret-right" title="Next Project"></button>
+					<div id="projects_btn_wrap">
+						<p>I have put my skills to the test by undertaking some personally-curated projects. Click the button below to view them.</p>
+						<button onclick="window.open('./projects/projects.html')">Go to my projects <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
 					</div>
 				</div>
 			</section>	

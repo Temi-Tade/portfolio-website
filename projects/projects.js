@@ -53,8 +53,8 @@ document.onreadystatechange = (e) => {
 const searchProjects = (q) => {
     let project_names = [...PROJECT_LIST.querySelectorAll("li h4")]
 
-    project_names.forEach((val, ind) => {
-        if (val.innerHTML.includes(q)) {
+    project_names.forEach((val) => {
+        if (val.innerHTML.toLowerCase().includes(q.toLowerCase())) {
             val.parentElement.style.display = "flex"
         } else {
             val.parentElement.style.display = "none"
