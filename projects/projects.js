@@ -43,7 +43,7 @@ document.onreadystatechange = (e) => {
         getRepoInfo("love_calculator", "https://temi-tade.github.io/love_calculator/", "../assets/images/love_calc.png")
         getRepoInfo("countdown-timer", "https://temi-tade.github.io/countdown-timer/", "../assets/images/count_down.png")
         getRepoInfo("fastest_finger_game", "https://turbo-clickz.web.app", "../assets/images/turbo.jpg")
-        getRepoInfo("svg_editor", "https://web-svg-edit.web.app/", "../assets/images/editor.png")
+        getRepoInfo("svg-editor", "https://web-svg-edit.web.app/", "../assets/images/editor.png")
         getRepoInfo("Todo-list", "https://to-do-app-5106d.web.app/", "../assets/images/todo.png")
     } else {
         PROJECT_LIST.innerHTML = "Loading..."

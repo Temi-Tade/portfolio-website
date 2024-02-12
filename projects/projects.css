@@ -4,8 +4,21 @@
     box-sizing: border-box;
 }
 
+#wrap{
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrap p{
+    text-align: center;
+}
+
 #search_wrap{
     padding: .75rem;
+    width: 100%;
 }
 
 input{
