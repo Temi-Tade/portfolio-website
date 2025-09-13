@@ -21,7 +21,7 @@
     ]
 </script>
 
-<section class="p-[.75rem]">
+<section class="p-[.75rem]" id="about">
     <div class="md:grid grid-cols-2">
         <div class="p-1">
             <h2 class="text-2xl p-1">

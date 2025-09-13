@@ -20,7 +20,7 @@
     ]
 </script>
 
-<section class="p-3 bg-[#dedede99]">
+<section class="p-3 bg-[#dedede99]" id="contacts">
     <div class="p-2">
         <h2 class="text-2xl font-bold">Contacts</h2>
         <div class="p-2 flex items-center justify-between">

@@ -71,15 +71,16 @@
     ];
 </script>
 
-<section class="p-3">
+<section class="p-3" id="projects">
     {#if isModalOpen}
         <Modal onClose={() => isModalOpen = !isModalOpen}>
             <h3 class="text-xl font-bold">{projectModalDetails.name}</h3>
             <div class="py-2">
-                <img 
+                <img
+                    width="500"
                     src={projectModalDetails.image} 
                     alt={projectModalDetails.description}
-                    class="rounded-sm">
+                    class="rounded-sm m-auto">
             </div>
             <p class="italic text-sm">{projectModalDetails.description}</p>
         </Modal>

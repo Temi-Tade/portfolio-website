@@ -16,9 +16,9 @@
 
     const links: Links[] = [
         { id: 0, name: "Home", href: "#", icon: Home },
-        { id: 1, name: "About", href: "#", icon: About },
-        { id: 2, name: "Projects", href: "#", icon: Cog },
-        { id: 3, name: "Contacts", href: "#", icon: Phone },
+        { id: 1, name: "About", href: "#about", icon: About },
+        { id: 2, name: "Projects", href: "#projects", icon: Cog },
+        { id: 3, name: "Contacts", href: "#contacts", icon: Phone },
     ];
 
     let isMenuOpen = $state(false);
@@ -27,7 +27,7 @@
 <section class="sticky top-0 bg-[#fffd] backdrop-blur-md shadow-sm">
     <header class="flex items-center justify-between p-[.5rem]">
         <div>
-            <img src="/favicon.svg" alt="Temiloluwa" class="md:w-10 w-10">
+            <img src="/TEEE.png" alt="Temiloluwa" class="md:w-20 w-15">
         </div>
 
         <div class="md:static fixed right-2 top-2 flex items-top">
