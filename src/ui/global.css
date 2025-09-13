@@ -6,7 +6,7 @@ html, body{
     font-family: "Raleway", sans-serif;
 }
 
-button{
+button, .button-link{
     padding: .5rem;
     border-radius: .6rem;
     cursor: pointer;

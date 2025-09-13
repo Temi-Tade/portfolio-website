@@ -1,6 +1,14 @@
 <script lang="ts">
     import ArrowOut from 'lucide-svelte/icons/arrow-up-right';
     import GitHub from 'lucide-svelte/icons/github';
+	import Modal from './Modal.svelte';
+
+    let projectModalDetails = $state({
+        name: "",
+        image: "",
+        description: ""
+    });
+    let isModalOpen = $state(false);
 
     type ProjectType = {
         id: number;
@@ -64,19 +72,39 @@
 </script>
 
 <section class="p-3">
+    {#if isModalOpen}
+        <Modal onClose={() => isModalOpen = !isModalOpen}>
+            <h3 class="text-xl font-bold">{projectModalDetails.name}</h3>
+            <div class="py-2">
+                <img 
+                    src={projectModalDetails.image} 
+                    alt={projectModalDetails.description}
+                    class="rounded-sm">
+            </div>
+            <p class="italic text-sm">{projectModalDetails.description}</p>
+        </Modal>
+    {/if}
     <div class="p-2">
         <h2 class="text-center text-3xl font-bold">Projects</h2>
         <ul class="md:grid grid-cols-2 gap-1 w-[100%]">
             {#each projects as project (project.id)}
                 <li class="m-[1px auto] p-1 w-[100%] flex justify-around items-center">
                     <div class="grid place-items-center w-[45%] h-[100%]">
-                        <img
-                            src={project.image}
-                            alt={project.description}
-                            width="350"
-                            loading="lazy" 
-                            class="cursor-pointer hover:scale-[1.1]"
-                        >
+                        <button onclick={() => {
+                            isModalOpen = !isModalOpen;
+                            projectModalDetails.name = project.name;
+                            projectModalDetails.image = project.image;
+                            projectModalDetails.description = project.description;
+
+                        }}>
+                            <img
+                                src={project.image}
+                                alt={project.description}
+                                width="350"
+                                loading="lazy" 
+                                class="cursor-pointer hover:scale-[1.1]"
+                            >
+                        </button>
                     </div>
 
                     <div class="mt-2 py-1 text-center w-[50%]">

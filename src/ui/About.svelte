@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Download from 'lucide-svelte/icons/download';
+    import Download from 'lucide-svelte/icons/file';
     import Computer from 'lucide-svelte/icons/computer';
     import Maintenace from 'lucide-svelte/icons/tool-case';
     import Api from 'lucide-svelte/icons/code';
@@ -31,7 +31,9 @@
 
             <div class="p-1 my-2">
                 <div class="p-1 my-4">
-                    <button class="bg-blue-900 text-[#fff] hover:bg-[#fff] hover:text-blue-900"><Download class='inline-block'/> My Resume</button>
+                    <a 
+                        class="button-link bg-blue-900 text-[#fff] hover:bg-[#fff] hover:text-blue-900"
+                        href="/AKINTADE TEMILOLUWA AYOMIDE CV.pdf"><Download class='inline-block'/> My Resume</a>
                     <button class="text-blue-900 hover:bg-blue-900 hover:text-[#fff]">Got a Project?</button>
                 </div>
 
@@ -61,17 +63,17 @@
         <div class="p-2">
             <div class="grid place-items-center">
                 <img 
-                    src="/temiloluwa.png" 
+                    src="/temiloluwa.jpg"
                     alt="My_Picture" 
                     width="400"
                     loading="lazy"
-                    class="border-3 rounded-[50%] object-cover mt-[-1rem] bg-[#dedede77]">
+                    class="rounded-lg object-cover mt-[-1rem] bg-[#dedede77]">
             </div>
 
             <div class="px-2">
-                <h3 class="text-3xl font-bold mb-4">About me</h3>
+                <h3 class="text-3xl font-bold mb-4 pt-4">About me</h3>
                 <div>
-                    <p>I am a web developer with about four years of experience in building web applications that solve problems.</p>
+                    <p>I am a web developer with over four years of experience in building web applications that solve problems.</p>
                     <p>I am focused on transforming ideas into code from scratch with JavaScript or libraries and frameworks like ReactJS and Svelte among other technologies. I have worked on projects that featured API and AI integration.</p>
                 </div>
             </div>
