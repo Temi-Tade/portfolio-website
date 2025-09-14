@@ -1,0 +1,14 @@
+*{
+    transition: .5s;
+}
+
+html, body{
+    font-family: "Raleway", sans-serif;
+    scroll-behavior: smooth;
+}
+
+button, .button-link{
+    padding: .5rem;
+    border-radius: .6rem;
+    cursor: pointer;
+}
