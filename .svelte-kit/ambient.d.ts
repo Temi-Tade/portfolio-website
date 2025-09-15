@@ -21,7 +21,7 @@
  * 
  * You can override `.env` values from the command line like so:
  * 
- * ```bash
+ * ```sh
  * MY_FEATURE_FLAG="enabled" npm run dev
  * ```
  */
@@ -35,15 +35,13 @@ declare module '$env/static/private' {
 	export const XDG_CONFIG_DIRS: string;
 	export const npm_config_cache: string;
 	export const NVM_INC: string;
-	export const HISTCONTROL: string;
 	export const DEFAULTPAINT: string;
+	export const HISTCONTROL: string;
 	export const TERM_PROGRAM_VERSION: string;
-	export const VSCODE_INSPECTOR_OPTIONS: string;
-	export const HOSTNAME: string;
 	export const HISTSIZE: string;
+	export const HOSTNAME: string;
 	export const PREFIX: string;
 	export const NODE: string;
-	export const NODE_OPTIONS: string;
 	export const XDG_DATA_HOME: string;
 	export const XDG_CONFIG_HOME: string;
 	export const COLOR: string;
@@ -58,8 +56,8 @@ declare module '$env/static/private' {
 	export const DEFAULTSPREADSHEET: string;
 	export const _: string;
 	export const XAUTHORITY: string;
-	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const DEFAULTDRAW: string;
+	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const DEFAULTIMAGEVIEWER: string;
 	export const WINDOWPATH: string;
 	export const LD_PRELOAD: string;
@@ -83,12 +81,12 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const DEFAULTMEDIAPLAYER: string;
 	export const npm_config_npm_version: string;
-	export const TERMINFO: string;
 	export const TERM: string;
+	export const TERMINFO: string;
 	export const npm_package_name: string;
 	export const npm_config_prefix: string;
-	export const USER: string;
 	export const CALIBRE_USE_DARK_PALETTE: string;
+	export const USER: string;
 	export const LIBASOUND_THREAD_SAFE: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const COLORFGBG: string;
@@ -115,8 +113,8 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const XDG_DATA_DIRS: string;
 	export const GDK_BACKEND: string;
-	export const BROWSER: string;
 	export const npm_config_noproxy: string;
+	export const BROWSER: string;
 	export const PATH: string;
 	export const npm_config_node_gyp: string;
 	export const DEFAULTHTMLEDITOR: string;
@@ -133,6 +131,7 @@ declare module '$env/static/private' {
 	export const OLDPWD: string;
 	export const TERM_PROGRAM: string;
 	export const TEXTDOMAIN: string;
+	export const NODE_ENV: string;
 }
 
 /**
@@ -153,14 +152,12 @@ declare module '$env/static/public' {
  * 
  * This module cannot be imported into client-side code.
  * 
- * Dynamic environment variables cannot be used during prerendering.
- * 
  * ```ts
  * import { env } from '$env/dynamic/private';
  * console.log(env.DEPLOYMENT_SPECIFIC_VARIABLE);
  * ```
  * 
- * > In `dev`, `$env/dynamic` always includes environment variables from `.env`. In `prod`, this behavior will depend on your adapter.
+ * > [!NOTE] In `dev`, `$env/dynamic` always includes environment variables from `.env`. In `prod`, this behavior will depend on your adapter.
  */
 declare module '$env/dynamic/private' {
 	export const env: {
@@ -173,15 +170,13 @@ declare module '$env/dynamic/private' {
 		XDG_CONFIG_DIRS: string;
 		npm_config_cache: string;
 		NVM_INC: string;
-		HISTCONTROL: string;
 		DEFAULTPAINT: string;
+		HISTCONTROL: string;
 		TERM_PROGRAM_VERSION: string;
-		VSCODE_INSPECTOR_OPTIONS: string;
-		HOSTNAME: string;
 		HISTSIZE: string;
+		HOSTNAME: string;
 		PREFIX: string;
 		NODE: string;
-		NODE_OPTIONS: string;
 		XDG_DATA_HOME: string;
 		XDG_CONFIG_HOME: string;
 		COLOR: string;
@@ -196,8 +191,8 @@ declare module '$env/dynamic/private' {
 		DEFAULTSPREADSHEET: string;
 		_: string;
 		XAUTHORITY: string;
-		VSCODE_GIT_ASKPASS_NODE: string;
 		DEFAULTDRAW: string;
+		VSCODE_GIT_ASKPASS_NODE: string;
 		DEFAULTIMAGEVIEWER: string;
 		WINDOWPATH: string;
 		LD_PRELOAD: string;
@@ -221,12 +216,12 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		DEFAULTMEDIAPLAYER: string;
 		npm_config_npm_version: string;
-		TERMINFO: string;
 		TERM: string;
+		TERMINFO: string;
 		npm_package_name: string;
 		npm_config_prefix: string;
-		USER: string;
 		CALIBRE_USE_DARK_PALETTE: string;
+		USER: string;
 		LIBASOUND_THREAD_SAFE: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		COLORFGBG: string;
@@ -253,8 +248,8 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		XDG_DATA_DIRS: string;
 		GDK_BACKEND: string;
-		BROWSER: string;
 		npm_config_noproxy: string;
+		BROWSER: string;
 		PATH: string;
 		npm_config_node_gyp: string;
 		DEFAULTHTMLEDITOR: string;
@@ -271,6 +266,7 @@ declare module '$env/dynamic/private' {
 		OLDPWD: string;
 		TERM_PROGRAM: string;
 		TEXTDOMAIN: string;
+		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
@@ -280,8 +276,6 @@ declare module '$env/dynamic/private' {
  * Similar to [`$env/dynamic/private`](https://svelte.dev/docs/kit/$env-dynamic-private), but only includes variables that begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
  * 
  * Note that public dynamic environment variables must all be sent from the server to the client, causing larger network requests — when possible, use `$env/static/public` instead.
- * 
- * Dynamic environment variables cannot be used during prerendering.
  * 
  * ```ts
  * import { env } from '$env/dynamic/public';

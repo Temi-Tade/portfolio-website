@@ -1,30 +1,13 @@
-import { H as HYDRATION_ERROR, a as BOUNDARY_EFFECT, E as ERROR_VALUE, b as EFFECT_RAN, d as define_property, r as run_all, U as UNOWNED, M as MAYBE_DIRTY, C as CLEAN, D as DERIVED, B as BROWSER, I as INERT, c as EFFECT, A as ASYNC, e as BLOCK_EFFECT, f as DIRTY, g as deferred, h as BRANCH_EFFECT, R as ROOT_EFFECT, i as DESTROYED, j as USER_EFFECT, k as INSPECT_EFFECT, S as STATE_SYMBOL, o as object_prototype, l as array_prototype, m as UNINITIALIZED, n as get_descriptor, p as get_prototype_of, q as is_array, s as is_extensible, t as EFFECT_PRESERVED, u as HEAD_EFFECT, v as STALE_REACTION, w as EFFECT_TRANSPARENT, x as DISCONNECTED, y as REACTION_IS_UPDATING, z as index_of, F as COMMENT_NODE, G as HYDRATION_START, J as HYDRATION_END, K as array_from, L as is_passive_event, N as LEGACY_PROPS, O as render, P as push$1, Q as setContext, T as pop$1 } from "./index.js";
+import { H as HYDRATION_ERROR, B as BOUNDARY_EFFECT, E as ERROR_VALUE, a as EFFECT_RAN, d as define_property, r as run_all, U as UNOWNED, M as MAYBE_DIRTY, C as CLEAN, D as DERIVED, I as INERT, b as EFFECT, A as ASYNC, c as BLOCK_EFFECT, e as DIRTY, f as deferred, g as BRANCH_EFFECT, R as ROOT_EFFECT, h as DESTROYED, i as INSPECT_EFFECT, S as STATE_SYMBOL, o as object_prototype, j as array_prototype, k as UNINITIALIZED, l as get_descriptor, m as get_prototype_of, n as is_array, p as is_extensible, q as EFFECT_PRESERVED, s as HEAD_EFFECT, t as EFFECT_TRANSPARENT, u as STALE_REACTION, v as USER_EFFECT, w as DISCONNECTED, x as REACTION_IS_UPDATING, y as index_of, z as COMMENT_NODE, F as HYDRATION_START, G as HYDRATION_END, J as array_from, K as is_passive_event, L as LEGACY_PROPS, N as render, O as push$1, P as setContext, Q as pop$1 } from "./index.js";
+import { B as BROWSER } from "./false.js";
 import { s as safe_equals, e as equals } from "./equality.js";
 import "clsx";
-let base = "/portfolio-website";
-let assets = base;
-const app_dir = "_app";
-const initial = { base, assets };
-function override(paths) {
-  base = paths.base;
-  assets = paths.assets;
-}
-function reset() {
-  base = initial.base;
-  assets = initial.assets;
-}
-function set_assets(path) {
-  assets = initial.assets = path;
-}
+import "./environment.js";
 let public_env = {};
-let safe_public_env = {};
 function set_private_env(environment) {
 }
 function set_public_env(environment) {
   public_env = environment;
-}
-function set_safe_public_env(environment) {
-  safe_public_env = environment;
 }
 function effect_update_depth_exceeded() {
   {
@@ -160,14 +143,26 @@ function apply_adjustments(error) {
 let micro_tasks = [];
 let idle_tasks = [];
 function run_micro_tasks() {
-  var tasks2 = micro_tasks;
+  var tasks = micro_tasks;
   micro_tasks = [];
-  run_all(tasks2);
+  run_all(tasks);
 }
 function run_idle_tasks() {
-  var tasks2 = idle_tasks;
+  var tasks = idle_tasks;
   idle_tasks = [];
-  run_all(tasks2);
+  run_all(tasks);
+}
+function has_pending_tasks() {
+  return micro_tasks.length > 0 || idle_tasks.length > 0;
+}
+function queue_micro_task(fn) {
+  if (micro_tasks.length === 0 && !is_flushing_sync) {
+    var tasks = micro_tasks;
+    queueMicrotask(() => {
+      if (tasks === micro_tasks) run_micro_tasks();
+    });
+  }
+  micro_tasks.push(fn);
 }
 function flush_tasks() {
   if (micro_tasks.length > 0) {
@@ -225,28 +220,14 @@ function update_derived(derived) {
   if (is_destroying_effect) {
     return;
   }
-  if (batch_deriveds !== null) {
-    batch_deriveds.set(derived, derived.v);
-  } else {
+  {
     var status = (skip_reaction || (derived.f & UNOWNED) !== 0) && derived.deps !== null ? MAYBE_DIRTY : CLEAN;
     set_signal_status(derived, status);
   }
 }
 const batches = /* @__PURE__ */ new Set();
 let current_batch = null;
-let batch_deriveds = null;
 let effect_pending_updates = /* @__PURE__ */ new Set();
-let tasks = [];
-function dequeue() {
-  const task = (
-    /** @type {() => void} */
-    tasks.shift()
-  );
-  if (tasks.length > 0) {
-    queueMicrotask(dequeue);
-  }
-  task();
-}
 let queued_root_effects = [];
 let last_scheduled_effect = null;
 let is_flushing = false;
@@ -337,24 +318,6 @@ class Batch {
    */
   process(root_effects) {
     queued_root_effects = [];
-    var current_values = null;
-    if (batches.size > 1) {
-      current_values = /* @__PURE__ */ new Map();
-      batch_deriveds = /* @__PURE__ */ new Map();
-      for (const [source2, current] of this.current) {
-        current_values.set(source2, { v: source2.v, wv: source2.wv });
-        source2.v = current;
-      }
-      for (const batch of batches) {
-        if (batch === this) continue;
-        for (const [source2, previous] of batch.#previous) {
-          if (!current_values.has(source2)) {
-            current_values.set(source2, { v: source2.v, wv: source2.wv });
-            source2.v = previous;
-          }
-        }
-      }
-    }
     for (const root2 of root_effects) {
       this.#traverse_effect_tree(root2);
     }
@@ -378,14 +341,6 @@ class Batch {
       this.#defer_effects(this.#render_effects);
       this.#defer_effects(this.#effects);
       this.#defer_effects(this.#block_effects);
-    }
-    if (current_values) {
-      for (const [source2, { v, wv }] of current_values) {
-        if (source2.wv <= wv) {
-          source2.v = v;
-        }
-      }
-      batch_deriveds = null;
     }
     for (const effect of this.#async_effects) {
       update_effect(effect);
@@ -412,11 +367,11 @@ class Batch {
       if (!skip && effect.fn !== null) {
         if (is_branch) {
           effect.f ^= CLEAN;
+        } else if ((flags & EFFECT) !== 0) {
+          this.#effects.push(effect);
         } else if ((flags & CLEAN) === 0) {
-          if ((flags & EFFECT) !== 0) {
-            this.#effects.push(effect);
-          } else if ((flags & ASYNC) !== 0) {
-            var effects = effect.b?.pending ? this.#boundary_async_effects : this.#async_effects;
+          if ((flags & ASYNC) !== 0) {
+            var effects = effect.b?.is_pending() ? this.#boundary_async_effects : this.#async_effects;
             effects.push(effect);
           } else if (is_dirty(effect)) {
             if ((effect.f & BLOCK_EFFECT) !== 0) this.#block_effects.push(effect);
@@ -546,10 +501,7 @@ class Batch {
   }
   /** @param {() => void} task */
   static enqueue(task) {
-    if (tasks.length === 0) {
-      queueMicrotask(dequeue);
-    }
-    tasks.unshift(task);
+    queue_micro_task(task);
   }
 }
 function flushSync(fn) {
@@ -560,7 +512,7 @@ function flushSync(fn) {
     if (fn) ;
     while (true) {
       flush_tasks();
-      if (queued_root_effects.length === 0) {
+      if (queued_root_effects.length === 0 && !has_pending_tasks()) {
         current_batch?.flush();
         if (queued_root_effects.length === 0) {
           last_scheduled_effect = null;
@@ -605,6 +557,7 @@ function infinite_loop_guard() {
     invoke_error_boundary(error, last_scheduled_effect);
   }
 }
+let eager_block_effects = null;
 function flush_queued_effects(effects) {
   var length = effects.length;
   if (length === 0) return;
@@ -612,7 +565,7 @@ function flush_queued_effects(effects) {
   while (i < length) {
     var effect = effects[i++];
     if ((effect.f & (DESTROYED | INERT)) === 0 && is_dirty(effect)) {
-      var n = current_batch ? current_batch.current.size : 0;
+      eager_block_effects = [];
       update_effect(effect);
       if (effect.deps === null && effect.first === null && effect.nodes_start === null) {
         if (effect.teardown === null && effect.ac === null) {
@@ -621,14 +574,16 @@ function flush_queued_effects(effects) {
           effect.fn = null;
         }
       }
-      if (current_batch !== null && current_batch.current.size > n && (effect.f & USER_EFFECT) !== 0) {
-        break;
+      if (eager_block_effects?.length > 0) {
+        old_values.clear();
+        for (const e of eager_block_effects) {
+          update_effect(e);
+        }
+        eager_block_effects = [];
       }
     }
   }
-  while (i < length) {
-    schedule_effect(effects[i++]);
-  }
+  eager_block_effects = null;
 }
 function schedule_effect(signal) {
   var effect = last_scheduled_effect = signal;
@@ -734,6 +689,14 @@ function mark_reactions(signal, status) {
         MAYBE_DIRTY
       );
     } else if (not_dirty) {
+      if ((flags & BLOCK_EFFECT) !== 0) {
+        if (eager_block_effects !== null) {
+          eager_block_effects.push(
+            /** @type {Effect} */
+            reaction
+          );
+        }
+      }
       schedule_effect(
         /** @type {Effect} */
         reaction
@@ -969,6 +932,18 @@ function get_next_sibling(node) {
 function clear_text_content(node) {
   node.textContent = "";
 }
+function without_reactive_context(fn) {
+  var previous_reaction = active_reaction;
+  var previous_effect = active_effect;
+  set_active_reaction(null);
+  set_active_effect(null);
+  try {
+    return fn();
+  } finally {
+    set_active_reaction(previous_reaction);
+    set_active_effect(previous_effect);
+  }
+}
 function push_effect(effect, parent_effect) {
   var parent_last = parent_effect.last;
   if (parent_last === null) {
@@ -1006,24 +981,31 @@ function create_effect(type, fn, sync, push2 = true) {
     try {
       update_effect(effect);
       effect.f |= EFFECT_RAN;
-    } catch (e) {
+    } catch (e2) {
       destroy_effect(effect);
-      throw e;
+      throw e2;
     }
   } else if (fn !== null) {
     schedule_effect(effect);
   }
-  var inert = sync && effect.deps === null && effect.first === null && effect.nodes_start === null && effect.teardown === null && (effect.f & EFFECT_PRESERVED) === 0;
-  if (!inert && push2) {
-    if (parent !== null) {
-      push_effect(effect, parent);
+  if (push2) {
+    var e = effect;
+    if (sync && e.deps === null && e.teardown === null && e.nodes_start === null && e.first === e.last && // either `null`, or a singular child
+    (e.f & EFFECT_PRESERVED) === 0) {
+      e = e.first;
     }
-    if (active_reaction !== null && (active_reaction.f & DERIVED) !== 0 && (type & ROOT_EFFECT) === 0) {
-      var derived = (
-        /** @type {Derived} */
-        active_reaction
-      );
-      (derived.effects ??= []).push(effect);
+    if (e !== null) {
+      e.parent = parent;
+      if (parent !== null) {
+        push_effect(e, parent);
+      }
+      if (active_reaction !== null && (active_reaction.f & DERIVED) !== 0 && (type & ROOT_EFFECT) === 0) {
+        var derived = (
+          /** @type {Derived} */
+          active_reaction
+        );
+        (derived.effects ??= []).push(e);
+      }
     }
   }
   return effect;
@@ -1033,7 +1015,7 @@ function create_user_effect(fn) {
 }
 function component_root(fn) {
   Batch.ensure();
-  const effect = create_effect(ROOT_EFFECT, fn, true);
+  const effect = create_effect(ROOT_EFFECT | EFFECT_PRESERVED, fn, true);
   return (options2 = {}) => {
     return new Promise((fulfil) => {
       if (options2.outro) {
@@ -1049,7 +1031,7 @@ function component_root(fn) {
   };
 }
 function branch(fn, push2 = true) {
-  return create_effect(BRANCH_EFFECT, fn, true, push2);
+  return create_effect(BRANCH_EFFECT | EFFECT_PRESERVED, fn, true, push2);
 }
 function execute_effect_teardown(effect) {
   var teardown = effect.teardown;
@@ -1070,7 +1052,12 @@ function destroy_effect_children(signal, remove_dom = false) {
   var effect = signal.first;
   signal.first = signal.last = null;
   while (effect !== null) {
-    effect.ac?.abort(STALE_REACTION);
+    const controller = effect.ac;
+    if (controller !== null) {
+      without_reactive_context(() => {
+        controller.abort(STALE_REACTION);
+      });
+    }
     var next = effect.next;
     if ((effect.f & ROOT_EFFECT) !== 0) {
       effect.parent = null;
@@ -1322,15 +1309,18 @@ function update_reaction(reaction) {
   untracking = false;
   update_version = ++read_version;
   if (reaction.ac !== null) {
-    reaction.ac.abort(STALE_REACTION);
+    without_reactive_context(() => {
+      reaction.ac.abort(STALE_REACTION);
+    });
     reaction.ac = null;
   }
   try {
     reaction.f |= REACTION_IS_UPDATING;
-    var result = (
+    var fn = (
       /** @type {Function} */
-      (0, reaction.fn)()
+      reaction.fn
     );
+    var result = fn();
     var deps = reaction.deps;
     if (new_deps !== null) {
       var i;
@@ -1518,9 +1508,6 @@ function get(signal) {
   } else if (is_derived) {
     derived = /** @type {Derived} */
     signal;
-    if (batch_deriveds?.has(derived)) {
-      return batch_deriveds.get(derived);
-    }
     if (is_dirty(derived)) {
       update_derived(derived);
     }
@@ -1552,6 +1539,7 @@ function set_signal_status(signal, status) {
 }
 const all_registered_events = /* @__PURE__ */ new Set();
 const root_event_handles = /* @__PURE__ */ new Set();
+let last_propagated_event = null;
 function handle_event_propagation(event) {
   var handler_element = this;
   var owner_document = (
@@ -1564,8 +1552,9 @@ function handle_event_propagation(event) {
     /** @type {null | Element} */
     path[0] || event.target
   );
+  last_propagated_event = event;
   var path_idx = 0;
-  var handled_at = event.__root;
+  var handled_at = last_propagated_event === event && event.__root;
   if (handled_at) {
     var at_idx = path.indexOf(handled_at);
     if (at_idx !== -1 && (handler_element === document || handler_element === /** @type {any} */
@@ -1690,16 +1679,19 @@ function hydrate(component, options2) {
       instance
     );
   } catch (error) {
-    if (error === HYDRATION_ERROR) {
-      if (options2.recover === false) {
-        hydration_failed();
-      }
-      init_operations();
-      clear_text_content(target);
-      set_hydrating(false);
-      return mount(component, options2);
+    if (error instanceof Error && error.message.split("\n").some((line) => line.startsWith("https://svelte.dev/e/"))) {
+      throw error;
     }
-    throw error;
+    if (error !== HYDRATION_ERROR) {
+      console.warn("Failed to hydrate: ", error);
+    }
+    if (options2.recover === false) {
+      hydration_failed();
+    }
+    init_operations();
+    clear_text_content(target);
+    set_hydrating(false);
+    return mount(component, options2);
   } finally {
     set_hydrating(was_hydrating);
     set_hydrate_node(previous_hydrate_node);
@@ -1910,12 +1902,6 @@ function asClassComponent(component) {
   component_constructor.render = _render;
   return component_constructor;
 }
-let prerendering = false;
-function set_building() {
-}
-function set_prerendering() {
-  prerendering = true;
-}
 function Root($$payload, $$props) {
   push$1();
   let {
@@ -1969,6 +1955,7 @@ const options = {
   app_template_contains_nonce: false,
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
+  csrf_trusted_origins: [],
   embedded: false,
   env_public_prefix: "PUBLIC_",
   env_private_prefix: "",
@@ -1978,8 +1965,9 @@ const options = {
   preload_strategy: "modulepreload",
   root,
   service_worker: false,
+  service_worker_options: void 0,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/TEEE.png" />\n		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<title>Temiloluwa | Portfolio</title>\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div>' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets + '/TEEE.png" />\n		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<title>Temiloluwa | Portfolio</title>\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div>' + body + "</div>\n	</body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -2051,12 +2039,13 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "14ntqm5"
+  version_hash: "p3x4f1"
 };
 async function get_hooks() {
   let handle;
   let handleFetch;
   let handleError;
+  let handleValidationError;
   let init;
   let reroute;
   let transport;
@@ -2064,29 +2053,19 @@ async function get_hooks() {
     handle,
     handleFetch,
     handleError,
+    handleValidationError,
     init,
     reroute,
     transport
   };
 }
 export {
-  assets as a,
-  base as b,
-  app_dir as c,
-  read_implementation as d,
-  options as e,
-  set_private_env as f,
+  set_public_env as a,
+  set_read_implementation as b,
+  set_manifest as c,
   get_hooks as g,
-  prerendering as h,
-  set_public_env as i,
-  set_safe_public_env as j,
-  set_read_implementation as k,
-  set_assets as l,
-  set_building as m,
-  set_manifest as n,
-  override as o,
+  options as o,
   public_env as p,
-  set_prerendering as q,
-  reset as r,
-  safe_public_env as s
+  read_implementation as r,
+  set_private_env as s
 };

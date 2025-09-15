@@ -23,3 +23,19 @@ declare module "svelte/elements" {
 }
 
 export {};
+
+
+declare module "$app/types" {
+	export interface AppTypes {
+		RouteId(): "/";
+		RouteParams(): {
+			
+		};
+		LayoutParams(): {
+			"/": Record<string, never>
+		};
+		Pathname(): "/";
+		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
+		Asset(): "/.nojekyll" | "/AKINTADE TEMILOLUWA AYOMIDE CV.pdf" | "/TEEE.png" | "/efiqo_screen.png" | "/favicon.svg" | "/keymaster_screen.png" | "/keyword_encoder_screen.png" | "/svg_editor_screen.png" | "/temiloluwa.jpg" | "/verbot_screen.png" | string & {};
+	}
+}

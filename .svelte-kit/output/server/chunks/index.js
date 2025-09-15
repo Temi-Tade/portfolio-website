@@ -1,5 +1,5 @@
 import { clsx as clsx$1 } from "clsx";
-const BROWSER = false;
+import { B as BROWSER } from "./false.js";
 var is_array = Array.isArray;
 var index_of = Array.prototype.indexOf;
 var array_from = Array.from;
@@ -73,6 +73,7 @@ const HYDRATION_END = "]";
 const HYDRATION_ERROR = {};
 const ELEMENT_IS_NAMESPACED = 1;
 const ELEMENT_PRESERVE_ATTRIBUTE_CASE = 1 << 1;
+const ELEMENT_IS_INPUT = 1 << 2;
 const UNINITIALIZED = Symbol();
 const VOID_ELEMENT_NAMES = [
   "area",
@@ -139,7 +140,7 @@ const RAW_TEXT_ELEMENTS = (
 );
 function is_raw_text_element(name) {
   return RAW_TEXT_ELEMENTS.includes(
-    /** @type {RAW_TEXT_ELEMENTS[number]} */
+    /** @type {typeof RAW_TEXT_ELEMENTS[number]} */
     name
   );
 }
@@ -331,6 +332,7 @@ function spread_attributes(attrs, css_hash, classes, styles, flags = 0) {
   let name;
   const is_html = (flags & ELEMENT_IS_NAMESPACED) === 0;
   const lowercase = (flags & ELEMENT_PRESERVE_ATTRIBUTE_CASE) === 0;
+  const is_input = (flags & ELEMENT_IS_INPUT) !== 0;
   for (name in attrs) {
     if (typeof attrs[name] === "function") continue;
     if (name[0] === "$" && name[1] === "$") continue;
@@ -338,6 +340,12 @@ function spread_attributes(attrs, css_hash, classes, styles, flags = 0) {
     var value = attrs[name];
     if (lowercase) {
       name = name.toLowerCase();
+    }
+    if (is_input) {
+      if (name === "defaultvalue" || name === "defaultchecked") {
+        name = name === "defaultvalue" ? "value" : "checked";
+        if (attrs[name]) continue;
+      }
     }
     attr_str += attr(name, value, is_html && is_boolean_attribute(name));
   }
@@ -405,67 +413,66 @@ function ensure_array_like(array_like_or_iterator) {
   return [];
 }
 export {
-  ensure_array_like as $,
+  spread_attributes as $,
   ASYNC as A,
-  BROWSER as B,
+  BOUNDARY_EFFECT as B,
   CLEAN as C,
   DERIVED as D,
   ERROR_VALUE as E,
-  COMMENT_NODE as F,
-  HYDRATION_START as G,
+  HYDRATION_START as F,
+  HYDRATION_END as G,
   HYDRATION_ERROR as H,
   INERT as I,
-  HYDRATION_END as J,
-  array_from as K,
-  is_passive_event as L,
+  array_from as J,
+  is_passive_event as K,
+  LEGACY_PROPS as L,
   MAYBE_DIRTY as M,
-  LEGACY_PROPS as N,
-  render as O,
-  push as P,
-  setContext as Q,
+  render as N,
+  push as O,
+  setContext as P,
+  pop as Q,
   ROOT_EFFECT as R,
   STATE_SYMBOL as S,
-  pop as T,
+  noop as T,
   UNOWNED as U,
-  noop as V,
-  getContext as W,
-  escape_html as X,
-  sanitize_props as Y,
-  rest_props as Z,
-  fallback as _,
-  BOUNDARY_EFFECT as a,
-  spread_attributes as a0,
-  clsx as a1,
-  element as a2,
-  slot as a3,
-  bind_props as a4,
-  spread_props as a5,
-  attr as a6,
-  attr_class as a7,
-  stringify as a8,
-  EFFECT_RAN as b,
-  EFFECT as c,
+  getContext as V,
+  escape_html as W,
+  sanitize_props as X,
+  rest_props as Y,
+  fallback as Z,
+  ensure_array_like as _,
+  EFFECT_RAN as a,
+  clsx as a0,
+  element as a1,
+  slot as a2,
+  bind_props as a3,
+  spread_props as a4,
+  attr as a5,
+  attr_class as a6,
+  stringify as a7,
+  EFFECT as b,
+  BLOCK_EFFECT as c,
   define_property as d,
-  BLOCK_EFFECT as e,
-  DIRTY as f,
-  deferred as g,
-  BRANCH_EFFECT as h,
-  DESTROYED as i,
-  USER_EFFECT as j,
-  INSPECT_EFFECT as k,
-  array_prototype as l,
-  UNINITIALIZED as m,
-  get_descriptor as n,
+  DIRTY as e,
+  deferred as f,
+  BRANCH_EFFECT as g,
+  DESTROYED as h,
+  INSPECT_EFFECT as i,
+  array_prototype as j,
+  UNINITIALIZED as k,
+  get_descriptor as l,
+  get_prototype_of as m,
+  is_array as n,
   object_prototype as o,
-  get_prototype_of as p,
-  is_array as q,
+  is_extensible as p,
+  EFFECT_PRESERVED as q,
   run_all as r,
-  is_extensible as s,
-  EFFECT_PRESERVED as t,
-  HEAD_EFFECT as u,
-  STALE_REACTION as v,
-  EFFECT_TRANSPARENT as w,
-  DISCONNECTED as x,
-  REACTION_IS_UPDATING as y,
-  index_of as z
+  HEAD_EFFECT as s,
+  EFFECT_TRANSPARENT as t,
+  STALE_REACTION as u,
+  USER_EFFECT as v,
+  DISCONNECTED as w,
+  REACTION_IS_UPDATING as x,
+  index_of as y,
+  COMMENT_NODE as z
 };
