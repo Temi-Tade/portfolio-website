@@ -27,7 +27,7 @@
 <section class="sticky top-0 bg-[#fffd] backdrop-blur-md shadow-sm">
     <header class="flex items-center justify-between p-[.5rem]">
         <div>
-            <img src="/TEEE.png" alt="Temiloluwa" class="md:w-20 w-15">
+            <img src="/images/TEEE.png" alt="Temiloluwa" class="md:w-20 w-15">
         </div>
 
         <div class="md:static fixed right-2 top-2 flex items-top">

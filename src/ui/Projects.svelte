@@ -28,7 +28,7 @@
             github: "https://github.com/Temi-Tade/Efiqo",
             description: "Study with flashcards and quizzes",
             tags: ["HTML", "CSS", "JS", "AI", "Firebase"],
-            image: "/efiqo_screen.png"
+            image: "/images/efiqo_screen.png"
         },
         { 
             id: 1, 
@@ -37,7 +37,7 @@
             github: "https://github.com/Temi-Tade/KeyMaster",
             description: "Start typing like a pro",
             tags: ["HTML", "CSS", "JS", "API"],
-            image: "/keymaster_screen.png"
+            image: "/images/keymaster_screen.png"
         },
         { 
             id: 2, 
@@ -46,7 +46,7 @@
             github: "https://github.com/Temi-Tade/svg-editor",
             description: "Create custom SVGs right inside your browser",
             tags: ["HTML", "CSS", "JS"],
-            image: "/svg_editor_screen.png"
+            image: "/images/svg_editor_screen.png"
 
         },
         { 
@@ -56,7 +56,7 @@
             github: "https://github.com/Temi-Tade/verbot.ai",
             description: "Can't type in your prompt? Tell AI and let it respond with speech!",
             tags: ["HTML", "CSS", "JS", "AI"],
-            image: "/verbot_screen.png"
+            image: "/images/verbot_screen.png"
 
         },
         { 
@@ -66,7 +66,7 @@
             github: "https://github.com/Temi-Tade/keyword-encoder",
             description: "A tool for encoding plain text and decoding enciphered text with a keyword.",
             tags: ["HTML", "CSS", "JS"],
-            image: "/keyword_encoder_screen.png"
+            image: "/images/keyword_encoder_screen.png"
         },
     ];
 </script>

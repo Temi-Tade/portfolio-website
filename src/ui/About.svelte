@@ -63,7 +63,7 @@
         <div class="p-2">
             <div class="grid place-items-center">
                 <img 
-                    src="/temiloluwa.jpg"
+                    src="/images/temiloluwa.jpg"
                     alt="My_Picture" 
                     width="400"
                     loading="lazy"
