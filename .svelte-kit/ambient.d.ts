@@ -109,7 +109,6 @@ declare module '$env/static/private' {
 	export const _: string;
 	export const _JAVA_OPTIONS: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
-	export const VSCODE_L10N_BUNDLE_LOCATION: string;
 	export const ELECTRON_NO_ASAR: string;
 	export const NODE_ENV: string;
 }
@@ -224,7 +223,6 @@ declare module '$env/dynamic/private' {
 		_: string;
 		_JAVA_OPTIONS: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
-		VSCODE_L10N_BUNDLE_LOCATION: string;
 		ELECTRON_NO_ASAR: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
