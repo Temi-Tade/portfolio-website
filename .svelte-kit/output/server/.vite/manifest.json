@@ -6,7 +6,8 @@
     "isEntry": true,
     "imports": [
       "_internal.js",
-      "_environment.js"
+      "_environment.js",
+      "_paths.js"
     ]
   },
   "_environment.js": {
@@ -43,8 +44,13 @@
       "_index.js",
       "_false.js",
       "_equality.js",
-      "_environment.js"
+      "_environment.js",
+      "_paths.js"
     ]
+  },
+  "_paths.js": {
+    "file": "chunks/paths.js",
+    "name": "paths"
   },
   "_shared.js": {
     "file": "chunks/shared.js",
@@ -65,6 +71,7 @@
     "imports": [
       "_shared.js",
       "_false.js",
+      "_paths.js",
       "_environment.js"
     ]
   },
@@ -86,7 +93,7 @@
     "isEntry": true,
     "imports": [
       "_false.js",
-      "_environment.js",
+      "_paths.js",
       "_exports.js",
       "_utils.js",
       "_internal.js",
@@ -108,7 +115,8 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js"
+      "_index.js",
+      "_paths.js"
     ],
     "css": [
       "_app/immutable/assets/_page.b4k4spGc.css"

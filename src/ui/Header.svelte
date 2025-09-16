@@ -6,6 +6,7 @@
     import Menu from 'lucide-svelte/icons/menu';
 	import X from 'lucide-svelte/icons/x';
 	import type { Icon as IconType } from 'lucide-svelte';
+    import { base } from '$app/paths';
 
     type Links = {
         id: number;
@@ -27,7 +28,7 @@
 <section class="sticky top-0 bg-[#fffd] backdrop-blur-md shadow-sm">
     <header class="flex items-center justify-between p-[.5rem]">
         <div>
-            <img src="/images/TEEE.png" alt="Temiloluwa" class="md:w-20 w-15">
+            <img src="{base}/images/TEEE.png" alt="Temiloluwa" class="md:w-20 w-15">
         </div>
 
         <div class="md:static fixed right-2 top-2 flex items-top">

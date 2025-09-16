@@ -1,5 +1,6 @@
 import "clsx";
-import { X as sanitize_props, Y as rest_props, Z as fallback, _ as ensure_array_like, $ as spread_attributes, a0 as clsx, a1 as element, a2 as slot, a3 as bind_props, Q as pop, O as push, a4 as spread_props, W as escape_html, a5 as attr, a6 as attr_class, a7 as stringify } from "../../chunks/index.js";
+import { X as sanitize_props, Y as rest_props, Z as fallback, _ as ensure_array_like, $ as spread_attributes, a0 as clsx, a1 as element, a2 as slot, a3 as bind_props, Q as pop, O as push, a4 as spread_props, W as escape_html, a5 as attr, a6 as stringify, a7 as attr_class } from "../../chunks/index.js";
+import { b as base } from "../../chunks/paths.js";
 /**
  * @license lucide-svelte v0.544.0 - ISC
  *
@@ -465,7 +466,7 @@ function About($$payload) {
   Tool_case($$payload, {});
   $$payload.out.push(`<!----> <span class="svelte-1bmiiuv">Website and Web App Maintenance</span></p> <hr class="border-[#7777]"/></li> <li class="svelte-1bmiiuv"><p class="svelte-1bmiiuv">`);
   Code($$payload, {});
-  $$payload.out.push(`<!----> <span class="svelte-1bmiiuv">API Integration</span></p> <hr class="border-[#7777]"/></li></ul></div></div> <div class="p-2"><div class="grid place-items-center"><img src="/images/temiloluwa.jpg" alt="My_Picture" width="400" loading="lazy" class="rounded-lg object-cover mt-[-1rem] bg-[#dedede77]"/></div> <div class="px-2"><h3 class="text-3xl font-bold mb-4 pt-4">About me</h3> <div><p>I am a web developer with over four years of experience in building web applications that solve problems.</p> <p>I am focused on transforming ideas into code from scratch with JavaScript or libraries and frameworks like ReactJS and Svelte among other technologies. I have worked on projects that featured API and AI integration.</p></div></div></div></div></section>`);
+  $$payload.out.push(`<!----> <span class="svelte-1bmiiuv">API Integration</span></p> <hr class="border-[#7777]"/></li></ul></div></div> <div class="p-2"><div class="grid place-items-center"><img${attr("src", `${stringify(base)}/images/temiloluwa.jpg`)} alt="My_Picture" width="400" loading="lazy" class="rounded-lg object-cover mt-[-1rem] bg-[#dedede77]"/></div> <div class="px-2"><h3 class="text-3xl font-bold mb-4 pt-4">About me</h3> <div><p>I am a web developer with over four years of experience in building web applications that solve problems.</p> <p>I am focused on transforming ideas into code from scratch with JavaScript or libraries and frameworks like ReactJS and Svelte among other technologies. I have worked on projects that featured API and AI integration.</p></div></div></div></div></section>`);
 }
 function Mail($$payload, $$props) {
   const $$sanitized_props = sanitize_props($$props);
@@ -1362,7 +1363,7 @@ function Header($$payload) {
     { id: 3, name: "Contacts", href: "#contacts", icon: Phone }
   ];
   const each_array = ensure_array_like(links);
-  $$payload.out.push(`<section class="sticky top-0 bg-[#fffd] backdrop-blur-md shadow-sm"><header class="flex items-center justify-between p-[.5rem]"><div><img src="/images/TEEE.png" alt="Temiloluwa" class="md:w-20 w-15"/></div> <div class="md:static fixed right-2 top-2 flex items-top"><div class="md:hidden"><button class="focus:bg-blue-900 focus:text-[#fff] mr-1">`);
+  $$payload.out.push(`<section class="sticky top-0 bg-[#fffd] backdrop-blur-md shadow-sm"><header class="flex items-center justify-between p-[.5rem]"><div><img${attr("src", `${stringify(base)}/images/TEEE.png`)} alt="Temiloluwa" class="md:w-20 w-15"/></div> <div class="md:static fixed right-2 top-2 flex items-top"><div class="md:hidden"><button class="focus:bg-blue-900 focus:text-[#fff] mr-1">`);
   {
     $$payload.out.push("<!--[!-->");
     Menu($$payload, {});
@@ -1386,7 +1387,7 @@ function Projects($$payload) {
       github: "https://github.com/Temi-Tade/Efiqo",
       description: "Study with flashcards and quizzes",
       tags: ["HTML", "CSS", "JS", "AI", "Firebase"],
-      image: "/images/efiqo_screen.png"
+      image: `${base}/images/efiqo_screen.png`
     },
     {
       id: 1,
@@ -1395,7 +1396,7 @@ function Projects($$payload) {
       github: "https://github.com/Temi-Tade/KeyMaster",
       description: "Start typing like a pro",
       tags: ["HTML", "CSS", "JS", "API"],
-      image: "/images/keymaster_screen.png"
+      image: `${base}/images/keymaster_screen.png`
     },
     {
       id: 2,
@@ -1404,7 +1405,7 @@ function Projects($$payload) {
       github: "https://github.com/Temi-Tade/svg-editor",
       description: "Create custom SVGs right inside your browser",
       tags: ["HTML", "CSS", "JS"],
-      image: "/images/svg_editor_screen.png"
+      image: `${base}/images/svg_editor_screen.png`
     },
     {
       id: 3,
@@ -1413,7 +1414,7 @@ function Projects($$payload) {
       github: "https://github.com/Temi-Tade/verbot.ai",
       description: "Can't type in your prompt? Tell AI and let it respond with speech!",
       tags: ["HTML", "CSS", "JS", "AI"],
-      image: "/images/verbot_screen.png"
+      image: `${base}/images/verbot_screen.png`
     },
     {
       id: 4,
@@ -1422,7 +1423,7 @@ function Projects($$payload) {
       github: "https://github.com/Temi-Tade/keyword-encoder",
       description: "A tool for encoding plain text and decoding enciphered text with a keyword.",
       tags: ["HTML", "CSS", "JS"],
-      image: "/images/keyword_encoder_screen.png"
+      image: `${base}/images/keyword_encoder_screen.png`
     }
   ];
   const each_array = ensure_array_like(projects);

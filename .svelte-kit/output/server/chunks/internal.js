@@ -3,6 +3,7 @@ import { B as BROWSER } from "./false.js";
 import { s as safe_equals, e as equals } from "./equality.js";
 import "clsx";
 import "./environment.js";
+import "./paths.js";
 let public_env = {};
 function set_private_env(environment) {
 }
@@ -2039,7 +2040,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "metnlr"
+  version_hash: "1o41263"
 };
 async function get_hooks() {
   let handle;

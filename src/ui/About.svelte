@@ -3,6 +3,7 @@
     import Computer from 'lucide-svelte/icons/computer';
     import Maintenace from 'lucide-svelte/icons/tool-case';
     import Api from 'lucide-svelte/icons/code';
+    import { base } from '$app/paths';
 
     type Tool = {
         id: number;
@@ -63,7 +64,7 @@
         <div class="p-2">
             <div class="grid place-items-center">
                 <img 
-                    src="/images/temiloluwa.jpg"
+                    src="{base}/images/temiloluwa.jpg"
                     alt="My_Picture" 
                     width="400"
                     loading="lazy"
