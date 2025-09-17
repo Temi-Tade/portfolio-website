@@ -34,8 +34,10 @@
                 <div class="p-1 my-4">
                     <a 
                         class="button-link bg-blue-900 text-[#fff] hover:bg-[#fff] hover:text-blue-900"
-                        href="/AKINTADE TEMILOLUWA AYOMIDE CV.pdf"><Download class='inline-block'/> My Resume</a>
-                    <button class="text-blue-900 hover:bg-blue-900 hover:text-[#fff]">Got a Project?</button>
+                        href="{base}/AKINTADE TEMILOLUWA AYOMIDE CV.pdf"><Download class='inline-block'/> My Resume</a>
+                    <a
+                        class="text-blue-900 hover:bg-blue-900 hover:text-[#fff]"
+                        href="mailto:akintadetemi19@gmail.com">Got a Project?</a>
                 </div>
 
                 <div class="p-2 grid md:grid-cols-4 md:grid-rows-2 grid-cols-2 gap-1 md:p-[1rem] rounded-sm bg-[#e7e7e7]">
@@ -64,7 +66,7 @@
         <div class="p-2">
             <div class="grid place-items-center">
                 <img 
-                    src="{base}/images/temiloluwa.jpg"
+                    src="{base}/docs/images/temiloluwa.jpg"
                     alt="My_Picture" 
                     width="400"
                     loading="lazy"

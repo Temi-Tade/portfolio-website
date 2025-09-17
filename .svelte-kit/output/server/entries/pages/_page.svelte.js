@@ -1,5 +1,5 @@
 import "clsx";
-import { X as sanitize_props, Y as rest_props, Z as fallback, _ as ensure_array_like, $ as spread_attributes, a0 as clsx, a1 as element, a2 as slot, a3 as bind_props, Q as pop, O as push, a4 as spread_props, W as escape_html, a5 as attr, a6 as stringify, a7 as attr_class } from "../../chunks/index.js";
+import { X as sanitize_props, Y as rest_props, Z as fallback, _ as ensure_array_like, $ as spread_attributes, a0 as clsx, a1 as element, a2 as slot, a3 as bind_props, Q as pop, O as push, a4 as spread_props, a5 as attr, W as escape_html, a6 as stringify, a7 as attr_class } from "../../chunks/index.js";
 import { b as base } from "../../chunks/paths.js";
 /**
  * @license lucide-svelte v0.544.0 - ISC
@@ -453,9 +453,9 @@ function About($$payload) {
     { id: 7, name: "Firebase" }
   ];
   const each_array = ensure_array_like(tools);
-  $$payload.out.push(`<section class="p-[.75rem]" id="about"><div class="md:grid grid-cols-2"><div class="p-1"><h2 class="text-2xl p-1"><p>Hello, <br/> I am Temiloluwa</p> <p class="text-5xl font-bold">Web Developer</p></h2> <div class="p-1 my-2"><div class="p-1 my-4"><a class="button-link bg-blue-900 text-[#fff] hover:bg-[#fff] hover:text-blue-900" href="/AKINTADE TEMILOLUWA AYOMIDE CV.pdf">`);
+  $$payload.out.push(`<section class="p-[.75rem]" id="about"><div class="md:grid grid-cols-2"><div class="p-1"><h2 class="text-2xl p-1"><p>Hello, <br/> I am Temiloluwa</p> <p class="text-5xl font-bold">Web Developer</p></h2> <div class="p-1 my-2"><div class="p-1 my-4"><a class="button-link bg-blue-900 text-[#fff] hover:bg-[#fff] hover:text-blue-900"${attr("href", `${stringify(base)}/AKINTADE TEMILOLUWA AYOMIDE CV.pdf`)}>`);
   File($$payload, { class: "inline-block" });
-  $$payload.out.push(`<!----> My Resume</a> <button class="text-blue-900 hover:bg-blue-900 hover:text-[#fff]">Got a Project?</button></div> <div class="p-2 grid md:grid-cols-4 md:grid-rows-2 grid-cols-2 gap-1 md:p-[1rem] rounded-sm bg-[#e7e7e7]"><!--[-->`);
+  $$payload.out.push(`<!----> My Resume</a> <a class="text-blue-900 hover:bg-blue-900 hover:text-[#fff]" href="mailto:akintadetemi19@gmail.com">Got a Project?</a></div> <div class="p-2 grid md:grid-cols-4 md:grid-rows-2 grid-cols-2 gap-1 md:p-[1rem] rounded-sm bg-[#e7e7e7]"><!--[-->`);
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let tool = each_array[$$index];
     $$payload.out.push(`<p class="rounded-sm p-1 text-lg font-light text-center even:bg-[#d3d3d3] odd:bg-[#c5c5c5]">${escape_html(tool.name)}</p>`);
@@ -466,7 +466,7 @@ function About($$payload) {
   Tool_case($$payload, {});
   $$payload.out.push(`<!----> <span class="svelte-1bmiiuv">Website and Web App Maintenance</span></p> <hr class="border-[#7777]"/></li> <li class="svelte-1bmiiuv"><p class="svelte-1bmiiuv">`);
   Code($$payload, {});
-  $$payload.out.push(`<!----> <span class="svelte-1bmiiuv">API Integration</span></p> <hr class="border-[#7777]"/></li></ul></div></div> <div class="p-2"><div class="grid place-items-center"><img${attr("src", `${stringify(base)}/images/temiloluwa.jpg`)} alt="My_Picture" width="400" loading="lazy" class="rounded-lg object-cover mt-[-1rem] bg-[#dedede77]"/></div> <div class="px-2"><h3 class="text-3xl font-bold mb-4 pt-4">About me</h3> <div><p>I am a web developer with over four years of experience in building web applications that solve problems.</p> <p>I am focused on transforming ideas into code from scratch with JavaScript or libraries and frameworks like ReactJS and Svelte among other technologies. I have worked on projects that featured API and AI integration.</p></div></div></div></div></section>`);
+  $$payload.out.push(`<!----> <span class="svelte-1bmiiuv">API Integration</span></p> <hr class="border-[#7777]"/></li></ul></div></div> <div class="p-2"><div class="grid place-items-center"><img${attr("src", `${stringify(base)}/docs/images/temiloluwa.jpg`)} alt="My_Picture" width="400" loading="lazy" class="rounded-lg object-cover mt-[-1rem] bg-[#dedede77]"/></div> <div class="px-2"><h3 class="text-3xl font-bold mb-4 pt-4">About me</h3> <div><p>I am a web developer with over four years of experience in building web applications that solve problems.</p> <p>I am focused on transforming ideas into code from scratch with JavaScript or libraries and frameworks like ReactJS and Svelte among other technologies. I have worked on projects that featured API and AI integration.</p></div></div></div></div></section>`);
 }
 function Mail($$payload, $$props) {
   const $$sanitized_props = sanitize_props($$props);
