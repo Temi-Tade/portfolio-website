@@ -36,6 +36,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/.nojekyll" | "/docs/AKINTADE TEMILOLUWA AYOMIDE CV.pdf" | "/images/TEEE.png" | "/images/efiqo_screen.png" | "/images/favicon.svg" | "/images/keymaster_screen.png" | "/images/keyword_encoder_screen.png" | "/images/svg_editor_screen.png" | "/images/temiloluwa.jpg" | "/images/verbot_screen.png" | string & {};
+		Asset(): "/.nojekyll" | "/docs/AKINTADE TEMILOLUWA AYOMIDE CV.pdf" | "/images/Skaylar.png" | "/images/TEEE.png" | "/images/favicon.svg" | "/images/medusa.png" | "/images/qdn_qft.png" | "/images/riveth.png" | "/images/temiloluwa-peerlist.jpg" | "/images/temiloluwa.jpg" | "/sitemap.xml" | string & {};
 	}
 }

@@ -1,13 +1,48 @@
-<script lang='ts'>
-    let { children, onClose } = $props();
+<script lang="ts">
+	let { children, onClose } = $props();
 </script>
 
-<div class="fixed inset-0 bg-[#d7d7d777] backdrop-blur-[1rem]">
-    <div class="p-4 bg-[#fff] absolute bottom-0 right-5 left-5 rounded-t-lg text-center shadow-md">
-        <div class="absolute top-1 right-2">
-            <button class="text-xl" onclick={() => onClose()}>&times;</button>
-        </div>
-
-        {@render children()}
-    </div>
+<div class="modal-backdrop" aria-modal="true" role="dialog">
+	<div class="modal-panel">
+		<button class="close-button" aria-label="Close modal" onclick={() => onClose()}>&times;</button>
+		{@render children()}
+	</div>
 </div>
+
+<style>
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		display: grid;
+		place-items: center;
+		padding: 1rem;
+		background: rgba(15, 23, 42, 0.56);
+		backdrop-filter: blur(12px);
+	}
+
+	.modal-panel {
+		position: relative;
+		width: min(100%, 42rem);
+		padding: 1.25rem 1.25rem 1.5rem;
+		border-radius: 1.5rem;
+		background: rgba(255, 255, 255, 0.96);
+		border: 1px solid rgba(15, 23, 42, 0.08);
+		box-shadow: 0 28px 60px rgba(15, 23, 42, 0.2);
+		text-align: center;
+	}
+
+	.close-button {
+		position: absolute;
+		top: 0.8rem;
+		right: 0.8rem;
+		width: 2.2rem;
+		height: 2.2rem;
+		border: none;
+		border-radius: 999px;
+		background: rgba(15, 23, 42, 0.05);
+		color: var(--primary-strong);
+		font-size: 1.6rem;
+		line-height: 1;
+	}
+</style>
