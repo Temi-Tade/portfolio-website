@@ -1,30 +1,27 @@
 <script lang="ts">
-	import Home from 'lucide-svelte/icons/house';
-	import About from 'lucide-svelte/icons/info';
-	import Cog from 'lucide-svelte/icons/cog';
-	import Phone from 'lucide-svelte/icons/phone';
-	import BookOpen from 'lucide-svelte/icons/book-open';
 	import Menu from 'lucide-svelte/icons/menu';
 	import X from 'lucide-svelte/icons/x';
-	import type { Icon as IconType } from 'lucide-svelte';
 	import { base } from '$app/paths';
 
-	type Links = {
+	type NavLink = {
 		id: number;
 		name: string;
 		href: string;
-		icon: typeof IconType;
 	};
 
-	const links: Links[] = [
-		{ id: 0, name: 'Home', href: '#', icon: Home },
-		{ id: 1, name: 'About', href: '#about', icon: About },
-		{ id: 2, name: 'Projects', href: '#projects', icon: Cog },
-		{ id: 3, name: 'Articles', href: '#articles', icon: BookOpen },
-		{ id: 4, name: 'Contacts', href: '#contacts', icon: Phone }
+	const links: NavLink[] = [
+		{ id: 0, name: 'Home', href: '#top' },
+		{ id: 1, name: 'About', href: '#about' },
+		{ id: 2, name: 'Projects', href: '#projects' },
+		{ id: 3, name: 'Articles', href: '#articles' },
+		{ id: 4, name: 'Contacts', href: '#contacts' }
 	];
 
 	let isMenuOpen = $state(false);
+
+	function closeMenu() {
+		isMenuOpen = false;
+	}
 </script>
 
 <section class="topbar">
@@ -33,35 +30,38 @@
 			<img src="{base}/images/TEEE.png" alt="Temiloluwa" />
 		</a>
 
-		<div class="nav-wrapper">
+		<nav class:open={isMenuOpen} class="nav-panel" aria-label="Main navigation">
+			<ul>
+				{#each links as link (link.id)}
+					<li>
+						<a href={link.href} class="nav-link" onclick={closeMenu}>
+							{link.name}
+						</a>
+					</li>
+				{/each}
+				<li class="mobile-cta-item">
+					<a href="mailto:akintadetemi19@gmail.com" class="nav-cta mobile-cta" onclick={closeMenu}>
+						Hire me
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="nav-actions">
+			<a href="mailto:akintadetemi19@gmail.com" class="nav-cta desktop-cta">Hire me</a>
 			<button
+				type="button"
 				class="menu-button"
 				aria-label="Toggle navigation menu"
+				aria-expanded={isMenuOpen}
 				onclick={() => (isMenuOpen = !isMenuOpen)}
 			>
 				{#if isMenuOpen}
-					<X />
+					<X size={20} />
 				{:else}
-					<Menu />
+					<Menu size={20} />
 				{/if}
 			</button>
-
-			<nav class:open={isMenuOpen} class="nav-panel" aria-label="Main navigation">
-				<ul>
-					{#each links as link (link.id)}
-						{@const Icon = link.icon}
-						<li>
-							<a href={link.href} class="nav-link">
-								<Icon />
-								<span>{link.name}</span>
-							</a>
-						</li>
-					{/each}
-					<li>
-						<a href="mailto:akintadetemi19@gmail.com" class="nav-cta">Hire me</a>
-					</li>
-				</ul>
-			</nav>
 		</div>
 	</header>
 </section>
@@ -71,117 +71,163 @@
 		position: sticky;
 		top: 0;
 		z-index: 50;
-		backdrop-filter: blur(18px);
-		background: rgba(245, 247, 255, 0.75);
+		backdrop-filter: blur(16px);
+		background: rgba(9, 9, 11, 0.84);
 		border-bottom: 1px solid var(--border);
 	}
 
 	.nav-shell {
-		width: min(1200px, calc(100% - 2rem));
+		width: min(1180px, calc(100% - 2rem));
 		margin: 0 auto;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0.9rem 0;
+		gap: 2rem;
+		padding: 0.85rem 0;
+		position: relative;
 	}
 
 	.brand {
 		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		padding: 0.25rem;
+		flex-shrink: 0;
+		padding: 0.15rem 0;
 	}
 
 	.brand img {
-		width: clamp(3.5rem, 4vw, 5rem);
+		width: clamp(3rem, 3.6vw, 3.85rem);
 		height: auto;
-	}
-
-	.nav-wrapper {
-		position: relative;
-		display: flex;
-		align-items: center;
-	}
-
-	.menu-button {
-		display: none;
-		align-items: center;
-		justify-content: center;
-		width: 2.8rem;
-		height: 2.8rem;
-		border: 1px solid var(--border);
-		border-radius: 0.9rem;
-		background: rgba(255, 255, 255, 0.8);
-		color: var(--primary-strong);
-	}
-
-	.menu-button:hover,
-	.menu-button:focus-visible {
-		background: rgba(29, 78, 216, 0.08);
-		border-color: rgba(29, 78, 216, 0.2);
-		transform: translateY(-1px);
 	}
 
 	.nav-panel ul {
 		list-style: none;
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: 1.75rem;
 		margin: 0;
 		padding: 0;
 	}
 
-	.nav-link,
-	.nav-cta {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.7rem 1rem;
-		border-radius: 999px;
-		font-size: 0.96rem;
-		font-weight: 600;
-		color: var(--primary-strong);
+	.nav-link {
+		position: relative;
+		display: inline-block;
+		padding: 0.35rem 0;
+		font-size: 0.92rem;
+		font-weight: 500;
+		color: var(--muted);
+		white-space: nowrap;
+		flex-shrink: 0;
+		transition: color 160ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-	.nav-link {
-		color: var(--muted);
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		background: var(--primary-bright);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.nav-link:hover,
 	.nav-link:focus-visible {
-		background: rgba(29, 78, 216, 0.08);
-		color: var(--primary);
+		color: var(--ink);
+	}
+
+	.nav-link:hover::after,
+	.nav-link:focus-visible::after {
+		transform: scaleX(1);
+	}
+
+	.nav-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		flex-shrink: 0;
 	}
 
 	.nav-cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.58rem 1.15rem;
+		border-radius: 0.55rem;
 		background: var(--primary);
 		color: #ffffff;
-		box-shadow: 0 12px 24px rgba(29, 78, 216, 0.2);
+		font-size: 0.88rem;
+		font-weight: 600;
+		white-space: nowrap;
+		flex-shrink: 0;
+		transition:
+			background-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.nav-cta:hover,
 	.nav-cta:focus-visible {
-		background: #1e3a8a;
+		background: var(--primary-hover);
 		transform: translateY(-1px);
 	}
 
+	.mobile-cta-item {
+		display: none;
+	}
+
+	.menu-button {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 2.65rem;
+		height: 2.65rem;
+		border: 1px solid var(--border);
+		border-radius: 0.55rem;
+		background: var(--surface);
+		color: var(--ink);
+		transition:
+			background-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+			border-color 160ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.menu-button:hover,
+	.menu-button:focus-visible {
+		background: var(--surface-elevated);
+		border-color: var(--border-strong);
+	}
+
 	@media (max-width: 768px) {
+		.desktop-cta {
+			display: none;
+		}
+
+		.mobile-cta-item {
+			display: block;
+			padding-top: 0.35rem;
+		}
+
 		.menu-button {
 			display: inline-flex;
 		}
 
 		.nav-panel {
 			position: absolute;
-			top: calc(100% + 0.75rem);
+			top: calc(100% + 0.5rem);
 			right: 0;
-			padding: 0.75rem;
-			border-radius: 1rem;
-			border: 1px solid var(--border);
-			background: rgba(255, 255, 255, 0.92);
+			min-width: 13.5rem;
+			padding: 0.85rem;
+			border-radius: 0.85rem;
+			border: 1px solid var(--border-strong);
+			background: var(--surface);
 			box-shadow: var(--shadow);
 			opacity: 0;
 			pointer-events: none;
-			transform: translateY(-8px);
+			transform: translateY(-6px);
+			transition:
+				opacity 180ms cubic-bezier(0.16, 1, 0.3, 1),
+				transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
 		}
 
 		.nav-panel.open {
@@ -193,13 +239,27 @@
 		.nav-panel ul {
 			flex-direction: column;
 			align-items: stretch;
-			min-width: 12rem;
+			gap: 0.25rem;
 		}
 
-		.nav-link,
-		.nav-cta {
-			justify-content: flex-start;
+		.nav-link {
+			display: block;
+			padding: 0.6rem 0.7rem;
+			border-radius: 0.45rem;
+		}
+
+		.nav-link::after {
+			display: none;
+		}
+
+		.nav-link:hover,
+		.nav-link:focus-visible {
+			background: var(--surface-elevated);
+		}
+
+		.mobile-cta {
 			width: 100%;
+			padding: 0.7rem 1rem;
 		}
 	}
 </style>

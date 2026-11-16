@@ -7,28 +7,77 @@
 	let projectModalDetails = $state({
 		name: '',
 		image: '',
-		description: ''
+		description: '',
+		link: '',
+		github: ''
 	});
 	let isModalOpen = $state(false);
+
+	type StackItem = {
+		name: string;
+		logo?: string;
+		custom?: 'hardhat';
+	};
+
+	const stackIcons = {
+		nextjs: { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/f4f4f5' },
+		typescript: { name: 'TypeScript', logo: 'https://cdn.simpleicons.org/typescript/3178c6' },
+		supabase: { name: 'Supabase', logo: 'https://cdn.simpleicons.org/supabase/3ecf8e' },
+		tailwindcss: { name: 'Tailwind CSS', logo: 'https://cdn.simpleicons.org/tailwindcss/38bdf8' },
+		react: { name: 'React', logo: 'https://cdn.simpleicons.org/react/61dafb' },
+		javascript: { name: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/f7df1e' },
+		nodejs: { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/5fa04e' },
+		hardhat: { name: 'Hardhat', custom: 'hardhat' as const },
+		c: { name: 'C', logo: 'https://cdn.simpleicons.org/c/60a5fa' }
+	};
 
 	type ProjectType = {
 		id: number;
 		name: string;
 		link: string;
-		github: string;
+		github?: string;
 		description: string;
+		stack: StackItem[];
 		tags: string[];
 		image: string;
 	};
 
 	const projects: ProjectType[] = [
 		{
+			id: 4,
+			name: 'ShipTok',
+			link: 'https://shiptok-app.vercel.app',
+			description:
+				'A social discovery platform for makers and builders to share builds, explore trending projects, and connect with creators.',
+			stack: [
+				stackIcons.nextjs,
+				stackIcons.typescript,
+				stackIcons.supabase,
+				stackIcons.tailwindcss
+			],
+			tags: ['Web App', 'Social', 'Makers', 'Discovery'],
+			image: `${base}/images/shiptok.png`
+		},
+		{
+			id: 5,
+			name: 'Ohm-E',
+			link: 'https://github.com/Temi-Tade/Ohm-E',
+			github: 'https://github.com/Temi-Tade/Ohm-E',
+			description:
+				'An interactive browser-based circuit simulator with a component library, real-time current flow, voltage coloring, and oscilloscope.',
+			stack: [stackIcons.react, stackIcons.typescript, stackIcons.tailwindcss],
+			tags: ['Electronics', 'Simulation', 'Interactive', 'Web App'],
+			image: `${base}/images/ohm-e.png`
+		},
+		{
 			id: 0,
 			name: 'RivETH',
 			link: 'https://temi-tade.github.io/RivETHDocs',
 			github: 'https://github.com/Temi-Tade/RivETH',
-			description: 'An open source Ethereum smart contract infrastructure for deploying and interacting with smart contracts. Alchemy-listed.',
-			tags: ['Ethereum', 'Smart Contracts', 'Open Source', 'Infrastructure', 'Dev Tools'],
+			description:
+				'An open source Ethereum smart contract infrastructure for deploying and interacting with smart contracts. Alchemy-listed.',
+			stack: [stackIcons.javascript, stackIcons.nodejs, stackIcons.hardhat],
+			tags: ['Ethereum', 'Smart Contracts', 'Open Source', 'Dev Tools'],
 			image: `${base}/images/riveth.png`
 		},
 		{
@@ -36,7 +85,8 @@
 			name: 'qodon',
 			link: 'https://github.com/Temi-Tade/qodon',
 			github: 'https://github.com/Temi-Tade/qodon',
-			description: 'A CLI-based genomics tool. Written in C',
+			description: 'A CLI-based genomics tool. Written in C.',
+			stack: [stackIcons.c],
 			tags: ['CLI', 'Genomics', 'Bioinformatics', 'C'],
 			image: `${base}/images/qdn_qft.png`
 		},
@@ -46,6 +96,7 @@
 			link: 'https://temi-tade.github.io/medusa',
 			github: 'https://github.com/Temi-Tade/medusa',
 			description: 'A password-based file encryption tool with lossless decryption.',
+			stack: [stackIcons.javascript],
 			tags: ['Encryption', 'Security', 'File Management'],
 			image: `${base}/images/medusa.png`
 		},
@@ -54,8 +105,10 @@
 			name: 'Skaylar',
 			link: 'https://temi-tade.github.io/Skaylar',
 			github: 'https://github.com/Temi-Tade/Skaylar',
-			description: 'A tool for analysing and visualizing first-digit distributions using Benford\'s Law.',
-			tags: ['Data Analysis', 'Visualization', 'Benford\'s Law', 'Statistics'],
+			description:
+				"A tool for analysing and visualizing first-digit distributions using Benford's Law.",
+			stack: [stackIcons.javascript],
+			tags: ['Data Analysis', 'Visualization', "Benford's Law", 'Statistics'],
 			image: `${base}/images/Skaylar.png`
 		}
 	];
@@ -63,296 +116,386 @@
 
 <section class="projects-section" id="projects">
 	{#if isModalOpen}
-		<Modal onClose={() => (isModalOpen = !isModalOpen)}>
-			<h3>{projectModalDetails.name}</h3>
+		<Modal onClose={() => (isModalOpen = false)}>
+			<h3 class="modal-title">{projectModalDetails.name}</h3>
 			<div class="modal-image-wrap">
 				<img
 					src={projectModalDetails.image}
 					alt={projectModalDetails.description}
 					loading="lazy"
+					referrerpolicy="no-referrer"
 				/>
 			</div>
-			<p>{projectModalDetails.description}</p>
+			<p class="modal-desc">{projectModalDetails.description}</p>
+			<div class="modal-actions">
+				{#if projectModalDetails.github}
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+					<a href={projectModalDetails.github} target="_blank" rel="noreferrer" class="project-link ghost-link">
+						<GitHub size={16} />
+						GitHub
+					</a>
+				{/if}
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+				<a href={projectModalDetails.link} target="_blank" rel="noreferrer" class="project-link primary-link">
+					View project
+					<ArrowOut size={16} />
+				</a>
+			</div>
 		</Modal>
 	{/if}
 
 	<div class="section-heading">
-		<span class="eyebrow">Selected work</span>
-		<h2>Builds that span product, blockchain, and systems thinking.</h2>
+		<div>
+			<span class="kicker">Selected work</span>
+			<h2>Builds that span product, blockchain, and systems thinking.</h2>
+		</div>
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+		<a href="https://github.com/Temi-Tade" target="_blank" rel="noreferrer" class="github-inline">
+			Visit my GitHub
+			<ArrowOut size={16} />
+		</a>
 	</div>
 
 	<ul class="projects-grid">
 		{#each projects as project (project.id)}
 			<li class="project-card">
-				<div class="project-media">
-					<button
-						class="image-button"
-						onclick={() => {
-							isModalOpen = !isModalOpen;
-							projectModalDetails.name = project.name;
-							projectModalDetails.image = project.image;
-							projectModalDetails.description = project.description;
-						}}
-					>
-						<img src={project.image} alt={project.description} loading="lazy" />
-					</button>
-					<div class="tag-list">
-						{#each project.tags as tag (tag)}
-							<span>{tag}</span>
-						{/each}
-					</div>
-				</div>
+				<button
+					type="button"
+					class="image-button"
+					aria-label={`Inspect ${project.name} screenshot`}
+					onclick={() => {
+						projectModalDetails = {
+							name: project.name,
+							image: project.image,
+							description: project.description,
+							link: project.link,
+							github: project.github ?? ''
+						};
+						isModalOpen = true;
+					}}
+				>
+					<img
+						src={project.image}
+						alt={project.description}
+						loading="lazy"
+						referrerpolicy="no-referrer"
+					/>
+				</button>
 
 				<div class="project-body">
-					<div class="project-title-row">
+					<div class="project-header">
 						<h3>{project.name}</h3>
-						<span>Live</span>
 					</div>
+
 					<p class="project-description">{project.description}</p>
+
+					<ul class="project-stack" aria-label={`${project.name} tech stack`}>
+						{#each project.stack as tech (tech.name)}
+							<li class="stack-icon" title={tech.name}>
+								{#if tech.custom === 'hardhat'}
+									<svg
+										viewBox="0 0 24 24"
+										width="18"
+										height="18"
+										role="img"
+										aria-label="Hardhat"
+										fill="none"
+									>
+										<path
+											d="M12 4.5c-4.2 0-7.5 3.2-7.5 7.3V15h15v-3.2c0-4.1-3.3-7.3-7.5-7.3Z"
+											fill="#FACC15"
+										/>
+										<path
+											d="M10.25 4.75V12h3.5V4.75a7.5 7.5 0 0 0-3.5 0Z"
+											fill="#FEF08A"
+										/>
+										<rect x="2.5" y="14.5" width="19" height="3" rx="1.5" fill="#EAB308" />
+									</svg>
+								{:else if tech.logo}
+									<img
+										src={tech.logo}
+										alt={tech.name}
+										width="18"
+										height="18"
+										loading="lazy"
+										referrerpolicy="no-referrer"
+									/>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+
+					<p class="project-tags">{project.tags.join(' · ')}</p>
+
 					<div class="project-actions">
-						<a href={project.github} class="project-link ghost-link">
-							<GitHub />
-							GitHub
-						</a>
-						<a href={project.link} class="project-link primary-link">
+						{#if project.github}
+							<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+							<a href={project.github} target="_blank" rel="noreferrer" class="project-link ghost-link">
+								<GitHub size={15} />
+								GitHub
+							</a>
+						{/if}
+						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+						<a href={project.link} target="_blank" rel="noreferrer" class="project-link primary-link">
 							View project
-							<ArrowOut />
+							<ArrowOut size={15} />
 						</a>
 					</div>
 				</div>
 			</li>
 		{/each}
 	</ul>
-
-	<div class="github-cta">
-		<a href="https://github.com/Temi-Tade">
-			Visit my GitHub
-			<ArrowOut />
-		</a>
-	</div>
 </section>
 
 <style>
 	.projects-section {
-		padding: 3rem 0 1rem;
+		margin-top: 2.5rem;
+		padding: 3rem 0 1.5rem;
+		border-top: 1px solid var(--border);
 	}
 
 	.section-heading {
-		margin-bottom: 1.5rem;
-		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 1rem 2rem;
+		margin-bottom: 2rem;
 	}
 
-	.eyebrow {
-		display: inline-flex;
-		padding: 0.5rem 0.9rem;
-		border-radius: 999px;
-		background: rgba(124, 58, 237, 0.08);
-		color: var(--accent);
-		font-size: 0.75rem;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+	.kicker {
+		display: block;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		color: var(--primary-bright);
 	}
 
 	.section-heading h2 {
-		margin: 1rem 0 0;
-		font-size: clamp(2rem, 3vw, 3rem);
-		letter-spacing: -0.05em;
+		margin: 0.5rem 0 0;
+		max-width: 34rem;
+		font-size: clamp(1.8rem, 3vw, 2.55rem);
+		line-height: 1.12;
+		letter-spacing: -0.03em;
+	}
+
+	.github-inline {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.65rem 1.05rem;
+		border-radius: 0.55rem;
+		border: 1px solid var(--border-strong);
+		background: var(--surface);
+		color: var(--ink);
+		font-size: 0.88rem;
+		font-weight: 600;
+		white-space: nowrap;
+		flex-shrink: 0;
+		transition:
+			background-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+			border-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.github-inline:hover,
+	.github-inline:focus-visible {
+		background: var(--surface-elevated);
+		border-color: rgba(255, 255, 255, 0.28);
+		transform: translateY(-1px);
 	}
 
 	.projects-grid {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 1.5rem;
+		gap: 1.35rem;
 		list-style: none;
 		margin: 0;
 		padding: 0;
 	}
 
 	.project-card {
-		display: grid;
-		grid-template-columns: 1.1fr 1fr;
-		gap: 1rem;
-		padding: 1rem;
+		display: flex;
+		flex-direction: column;
 		border: 1px solid var(--border);
-		border-radius: 1.5rem;
-		background: rgba(255, 255, 255, 0.65);
-		box-shadow: 0 14px 38px rgba(15, 23, 42, 0.04);
+		border-radius: 0.9rem;
+		background: var(--surface);
+		overflow: hidden;
+		transition:
+			border-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.project-card:hover {
-		transform: translateY(-3px);
-		box-shadow: var(--shadow);
-	}
-
-	.project-media {
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
-		justify-content: center;
+		border-color: var(--border-strong);
+		transform: translateY(-2px);
 	}
 
 	.image-button {
+		display: block;
+		width: 100%;
 		padding: 0;
 		border: none;
-		background: none;
-		width: 100%;
-	}
-
-	.image-button:hover img,
-	.image-button:focus-visible img {
-		scale: 1.02;
-		box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
+		border-bottom: 1px solid var(--border);
+		background: var(--bg-subtle);
+		overflow: hidden;
+		aspect-ratio: 16 / 10;
 	}
 
 	.image-button img {
 		width: 100%;
 		height: 100%;
-		max-height: 18rem;
 		object-fit: cover;
-		border-radius: 1rem;
-		border: 1px solid rgba(15, 23, 42, 0.05);
+		transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.image-button:hover img,
+	.image-button:focus-visible img {
+		transform: scale(1.03);
 	}
 
 	.project-body {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		flex: 1;
+		padding: 1.25rem 1.35rem 1.35rem;
 	}
 
-	.project-title-row {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 0.5rem;
-		margin-bottom: 0.5rem;
-	}
-
-	.project-title-row h3 {
+	.project-header h3 {
 		margin: 0;
-		font-size: 1.5rem;
-	}
-
-	.project-title-row span {
-		display: inline-flex;
-		padding: 0.35rem 0.55rem;
-		border-radius: 999px;
-		background: rgba(29, 78, 216, 0.08);
-		color: var(--primary);
-		font-size: 0.7rem;
-		font-weight: 700;
+		font-size: 1.35rem;
+		font-weight: 600;
+		letter-spacing: -0.02em;
 	}
 
 	.project-description {
-		margin: 0;
+		margin: 0.6rem 0 0;
 		color: var(--muted);
-		line-height: 1.7;
+		font-size: 0.94rem;
+		line-height: 1.62;
 	}
 
-	.tag-list {
+	.project-stack {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-top: 0.75rem;
+		align-items: center;
+		gap: 0.75rem;
+		list-style: none;
+		margin: 0.95rem 0 0;
+		padding: 0;
 	}
 
-	.tag-list span {
+	.stack-icon {
 		display: inline-flex;
-		padding: 0.35rem 0.6rem;
-		border-radius: 999px;
-		background: rgba(124, 58, 237, 0.06);
-		color: var(--primary-strong);
-		font-size: 0.72rem;
-		font-weight: 600;
+		align-items: center;
+		justify-content: center;
+		transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.stack-icon:hover {
+		transform: translateY(-1px) scale(1.1);
+	}
+
+	.stack-icon img,
+	.stack-icon svg {
+		width: 1.15rem;
+		height: 1.15rem;
+		object-fit: contain;
+		display: block;
+	}
+
+	.project-tags {
+		margin: 0.6rem 0 0;
+		font-size: 0.8rem;
+		color: var(--subtle);
+		line-height: 1.5;
 	}
 
 	.project-actions {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.75rem;
-		margin-top: 1.2rem;
+		gap: 0.65rem;
+		margin-top: auto;
+		padding-top: 1.25rem;
 	}
 
 	.project-link {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.45rem;
-		padding: 0.75rem 0.9rem;
-		border-radius: 999px;
-		font-weight: 700;
+		gap: 0.4rem;
+		padding: 0.58rem 1rem;
+		border-radius: 0.5rem;
+		font-size: 0.86rem;
+		font-weight: 600;
+		white-space: nowrap;
+		flex-shrink: 0;
+		transition:
+			background-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+			border-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.ghost-link {
-		background: rgba(15, 23, 42, 0.04);
-		color: var(--primary-strong);
+		background: var(--surface-elevated);
+		border: 1px solid var(--border);
+		color: var(--ink);
 	}
 
 	.ghost-link:hover,
 	.ghost-link:focus-visible {
-		background: rgba(29, 78, 216, 0.08);
+		border-color: var(--border-strong);
+		background: rgba(255, 255, 255, 0.08);
 		transform: translateY(-1px);
 	}
 
 	.primary-link {
 		background: var(--primary);
-		color: white;
+		color: #ffffff;
 	}
 
 	.primary-link:hover,
 	.primary-link:focus-visible {
-		background: #1e3a8a;
+		background: var(--primary-hover);
 		transform: translateY(-1px);
 	}
 
-	.github-cta {
-		display: flex;
-		justify-content: center;
-		margin-top: 1.5rem;
-	}
-
-	.github-cta a {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.9rem 1.25rem;
-		border-radius: 999px;
-		background: rgba(15, 23, 42, 0.95);
-		color: white;
-		font-weight: 700;
-	}
-
-	.github-cta a:hover,
-	.github-cta a:focus-visible {
-		background: #111827;
-		transform: translateY(-1px);
+	.modal-title {
+		margin: 0;
+		padding-right: 2.5rem;
+		font-size: 1.45rem;
 	}
 
 	.modal-image-wrap {
-		padding: 0.75rem 0 1rem;
+		margin: 1rem 0;
+		border-radius: 0.6rem;
+		overflow: hidden;
+		border: 1px solid var(--border);
+		background: var(--bg-subtle);
 	}
 
 	.modal-image-wrap img {
-		width: min(100%, 32rem);
-		margin: 0 auto;
-		border-radius: 1rem;
+		width: 100%;
+		max-height: 62vh;
+		object-fit: contain;
 	}
 
-	.projects-section h3 {
-		font-size: 1.35rem;
+	.modal-desc {
 		margin: 0;
+		color: var(--muted);
+		line-height: 1.65;
 	}
 
-	.projects-section p {
-		margin: 0;
+	.modal-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+		margin-top: 1.15rem;
 	}
 
 	@media (max-width: 768px) {
 		.projects-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.project-card {
 			grid-template-columns: 1fr;
 		}
 	}

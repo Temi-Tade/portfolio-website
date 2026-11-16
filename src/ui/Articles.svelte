@@ -59,9 +59,11 @@
 
 <section class="articles-section" id="articles">
 	<div class="section-heading">
-		<span class="eyebrow">Writing &amp; ideas</span>
-		<h2>Articles &amp; publications</h2>
-		<p>Notes on software, security, and the ideas behind the things I build.</p>
+		<div>
+			<span class="kicker">Writing &amp; ideas</span>
+			<h2>Articles &amp; publications</h2>
+			<p class="section-sub">Notes on software, security, and the ideas behind the things I build.</p>
+		</div>
 	</div>
 
 	<ul class="articles-grid">
@@ -70,6 +72,7 @@
 				<div class="article-meta">
 					<span>{article.publication}</span>
 					{#if article.published}
+						<span class="sep" aria-hidden="true">·</span>
 						<time>{article.published}</time>
 					{/if}
 				</div>
@@ -78,60 +81,66 @@
 				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 				<a href={article.href} target="_blank" rel="noreferrer" class="read-link">
 					Read article
-					<ArrowUpRight />
+					<ArrowUpRight size={16} />
 				</a>
 			</li>
 		{/each}
 	</ul>
 
 	<div class="publication-links" aria-label="More publications">
-		<BookOpen />
-		<span>Find me on</span>
-		{#each publications as publication (publication.name)}
-			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-			<a href={publication.href} target="_blank" rel="noreferrer">{publication.name}</a>
-		{/each}
+		<span class="pub-label">
+			<BookOpen size={15} />
+			Find me on
+		</span>
+		<div class="pub-items">
+			{#each publications as publication, idx (publication.name)}
+				{#if idx > 0}
+					<span class="sep" aria-hidden="true">·</span>
+				{/if}
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+				<a href={publication.href} target="_blank" rel="noreferrer">{publication.name}</a>
+			{/each}
+		</div>
 	</div>
 </section>
 
 <style>
 	.articles-section {
-		padding: 3rem 0 1rem;
+		margin-top: 2.5rem;
+		padding: 3rem 0 1.5rem;
+		border-top: 1px solid var(--border);
 	}
 
 	.section-heading {
-		margin-bottom: 1.5rem;
-		text-align: center;
+		margin-bottom: 1.75rem;
 	}
 
-	.eyebrow {
-		display: inline-flex;
-		padding: 0.5rem 0.9rem;
-		border-radius: 999px;
-		background: rgba(124, 58, 237, 0.08);
-		color: var(--accent);
-		font-size: 0.75rem;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+	.kicker {
+		display: block;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		color: var(--primary-bright);
 	}
 
 	.section-heading h2 {
-		margin: 1rem 0 0.5rem;
-		font-size: clamp(2rem, 3vw, 3rem);
-		letter-spacing: -0.05em;
+		margin: 0.5rem 0 0.45rem;
+		font-size: clamp(1.8rem, 3vw, 2.55rem);
+		line-height: 1.12;
+		letter-spacing: -0.03em;
 	}
 
-	.section-heading p {
+	.section-sub {
 		margin: 0;
 		color: var(--muted);
-		line-height: 1.7;
+		line-height: 1.65;
 	}
 
 	.articles-grid {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 1.5rem;
+		gap: 1.35rem;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -141,84 +150,111 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		padding: 1.5rem;
+		padding: 1.45rem;
 		border: 1px solid var(--border);
-		border-radius: 1.5rem;
-		background: rgba(255, 255, 255, 0.65);
-		box-shadow: 0 14px 38px rgba(15, 23, 42, 0.04);
+		border-radius: 0.9rem;
+		background: var(--surface);
+		transition:
+			border-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.article-card:hover {
-		transform: translateY(-3px);
-		box-shadow: var(--shadow);
+		border-color: var(--border-strong);
+		transform: translateY(-2px);
 	}
 
 	.article-meta {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.4rem 0.75rem;
-		color: var(--muted);
+		align-items: center;
+		gap: 0.45rem;
+		color: var(--subtle);
 		font-size: 0.82rem;
 	}
 
-	.article-meta span {
-		color: var(--primary);
-		font-weight: 700;
+	.article-meta span:first-child {
+		color: var(--primary-bright);
+		font-weight: 600;
+	}
+
+	.article-meta time {
+		font-family: var(--font-mono);
+		font-variant-numeric: tabular-nums;
+		font-size: 0.78rem;
+	}
+
+	.sep {
+		color: var(--subtle);
 	}
 
 	.article-card h3 {
-		margin: 1rem 0 0.6rem;
-		font-size: 1.3rem;
-		line-height: 1.35;
+		margin: 0.8rem 0 0.55rem;
+		font-size: 1.24rem;
+		line-height: 1.32;
+		letter-spacing: -0.02em;
 	}
 
 	.article-card p {
 		margin: 0;
 		color: var(--muted);
-		line-height: 1.7;
+		font-size: 0.94rem;
+		line-height: 1.65;
 	}
 
 	.read-link {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.45rem;
+		gap: 0.4rem;
 		margin-top: auto;
 		padding-top: 1.25rem;
-		color: var(--primary);
-		font-weight: 700;
+		color: var(--ink);
+		font-size: 0.88rem;
+		font-weight: 600;
+		transition:
+			color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+			transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.read-link:hover,
 	.read-link:focus-visible {
-		color: #1e3a8a;
+		color: var(--primary-bright);
 		transform: translateX(2px);
-	}
-
-	.read-link :global(svg),
-	.publication-links :global(svg) {
-		width: 1rem;
-		height: 1rem;
 	}
 
 	.publication-links {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
+		gap: 0.65rem 1rem;
 		margin-top: 1.5rem;
 		color: var(--muted);
-		font-size: 0.9rem;
+		font-size: 0.88rem;
+	}
+
+	.pub-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		color: var(--subtle);
+	}
+
+	.pub-items {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.55rem;
 	}
 
 	.publication-links a {
-		color: var(--primary);
-		font-weight: 700;
+		color: var(--ink);
+		font-weight: 600;
+		transition: color 160ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.publication-links a:hover,
 	.publication-links a:focus-visible {
-		color: #1e3a8a;
+		color: var(--primary-bright);
 		text-decoration: underline;
 	}
 

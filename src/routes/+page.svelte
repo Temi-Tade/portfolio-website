@@ -93,7 +93,8 @@
 		padding: 0.7rem 1rem;
 		border: 1px solid var(--border);
 		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.5);
+		background: rgba(255, 255, 255);
+		color: #333;
 		backdrop-filter: blur(12px);
 	}
 
