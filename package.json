@@ -6,7 +6,6 @@
 	"scripts": {
 		"dev": "vite dev --host 0.0.0.0 --port 3000",
 		"build": "vite build",
-		"start": "PORT=3000 HOST=0.0.0.0 node build",
 		"preview": "vite preview --host 0.0.0.0 --port 3000",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -19,7 +18,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.22.0",
-		"@sveltejs/adapter-node": "^5.2.0",
+		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"@tailwindcss/forms": "^0.5.9",
