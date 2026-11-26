@@ -38,8 +38,8 @@
 			<span class="kicker">Contact</span>
 			<h2>Let’s build something meaningful.</h2>
 			<p>
-				I work across product, web, blockchain, and platform engineering — from frontend experiences
-				to robust backend and systems work.
+				I work across web, blockchain, systems, and embedded engineering - from product interfaces
+				and smart contracts to developer tooling and technical partnerships.
 			</p>
 		</div>
 

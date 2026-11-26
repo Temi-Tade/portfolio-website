@@ -13,15 +13,37 @@
 		{ id: 0, name: 'Home', href: '#top' },
 		{ id: 1, name: 'About', href: '#about' },
 		{ id: 2, name: 'Projects', href: '#projects' },
-		{ id: 3, name: 'Articles', href: '#articles' },
-		{ id: 4, name: 'Contacts', href: '#contacts' }
+		{ id: 3, name: 'Spotlights', href: '#spotlights' },
+		{ id: 4, name: 'Articles', href: '#articles' },
+		{ id: 5, name: 'Contacts', href: '#contacts' }
 	];
 
 	let isMenuOpen = $state(false);
+	let readProgress = $state(0);
 
 	function closeMenu() {
 		isMenuOpen = false;
 	}
+
+	function updateReadProgress() {
+		if (typeof window === 'undefined') return;
+		const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+		if (scrollable <= 0) {
+			readProgress = 0;
+			return;
+		}
+		readProgress = Math.min(1, Math.max(0, window.scrollY / scrollable));
+	}
+
+	$effect(() => {
+		updateReadProgress();
+		window.addEventListener('scroll', updateReadProgress, { passive: true });
+		window.addEventListener('resize', updateReadProgress, { passive: true });
+		return () => {
+			window.removeEventListener('scroll', updateReadProgress);
+			window.removeEventListener('resize', updateReadProgress);
+		};
+	});
 </script>
 
 <section class="topbar">
@@ -64,6 +86,11 @@
 			</button>
 		</div>
 	</header>
+	<div
+		class="reading-progress"
+		aria-hidden="true"
+		style:transform={`scaleX(${readProgress})`}
+	></div>
 </section>
 
 <style>
@@ -74,6 +101,18 @@
 		backdrop-filter: blur(16px);
 		background: rgba(9, 9, 11, 0.84);
 		border-bottom: 1px solid var(--border);
+	}
+
+	.reading-progress {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px;
+		height: 2px;
+		background: linear-gradient(90deg, var(--primary) 0%, var(--primary-bright) 100%);
+		transform-origin: left center;
+		pointer-events: none;
+		will-change: transform;
 	}
 
 	.nav-shell {
@@ -103,7 +142,7 @@
 		list-style: none;
 		display: flex;
 		align-items: center;
-		gap: 1.75rem;
+		gap: 1.5rem;
 		margin: 0;
 		padding: 0;
 	}
@@ -198,7 +237,7 @@
 		border-color: var(--border-strong);
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 840px) {
 		.desktop-cta {
 			display: none;
 		}

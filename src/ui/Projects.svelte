@@ -147,7 +147,7 @@
 	<div class="section-heading">
 		<div>
 			<span class="kicker">Selected work</span>
-			<h2>Builds that span product, blockchain, and systems thinking.</h2>
+			<h2>Builds across web, blockchain, systems, and embedded software.</h2>
 		</div>
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href="https://github.com/Temi-Tade" target="_blank" rel="noreferrer" class="github-inline">

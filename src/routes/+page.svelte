@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
 	import About from "../ui/About.svelte";
+	import Projects from "../ui/Projects.svelte";
+	import Spotlights from "../ui/Spotlights.svelte";
+	import Articles from "../ui/Articles.svelte";
 	import Contacts from "../ui/Contacts.svelte";
 	import Header from "../ui/Header.svelte";
-	import Projects from "../ui/Projects.svelte";
-	import Articles from "../ui/Articles.svelte";
 	import Heart from 'lucide-svelte/icons/heart';
 
 	const siteUrl = 'https://temi-tade.github.io/portfolio-website/';
@@ -22,7 +23,8 @@
 			'https://dev.to/js_cipher',
 			'https://medium.com/@temi_lolu0x0',
 			'https://coderlegion.com/user/temi_0x0',
-			'https://peerlist.io/temi_lolu'
+			'https://peerlist.io/temi_lolu',
+			'https://discord.com/users/1061727196953190440'
 		]
 	};
 </script>
@@ -51,7 +53,9 @@
 		content="Web applications, blockchain products, smart contracts, systems, and embedded software by Temiloluwa Akintade."
 	/>
 	<meta name="twitter:image" content={`${siteUrl}images/temiloluwa-peerlist.jpg`} />
-	{@html `<script type="application/ld+json">${JSON.stringify(personSchema)}</script>`}
+	<script type="application/ld+json">
+		{@html JSON.stringify(personSchema)}
+	</script>
 </svelte:head>
 
 <div class="page-shell" id="top">
@@ -59,14 +63,18 @@
 	<main class="content-shell">
 		<About />
 		<Projects />
+		<Spotlights />
 		<Articles />
 		<Contacts />
 	</main>
 
 	<footer class="site-footer">
-		<p>
-			Made with <Heart fill="red" size={16} style="vertical-align: middle;" /> by Temiloluwa. All rights reserved.
-		</p>
+		<div class="footer-inner">
+			<p>
+				Made with <Heart fill="#ef4444" color="#ef4444" size={15} /> by Temiloluwa. All rights reserved.
+			</p>
+			<a href="#top" class="back-top">Back to top</a>
+		</div>
 	</footer>
 </div>
 
@@ -76,26 +84,42 @@
 	}
 
 	.content-shell {
-		width: min(1200px, calc(100% - 2rem));
+		width: min(1180px, calc(100% - 2rem));
 		margin: 0 auto;
 	}
 
 	.site-footer {
-		padding: 1.5rem 1rem 2rem;
-		text-align: center;
-		color: var(--muted);
+		width: min(1180px, calc(100% - 2rem));
+		margin: 1rem auto 0;
+		padding: 1.5rem 0 2.5rem;
+		border-top: 1px solid var(--border);
+		color: var(--subtle);
+		font-size: 0.875rem;
+	}
+
+	.footer-inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem 1.5rem;
 	}
 
 	.site-footer p {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-		padding: 0.7rem 1rem;
-		border: 1px solid var(--border);
-		border-radius: 999px;
-		background: rgba(255, 255, 255);
-		color: #333;
-		backdrop-filter: blur(12px);
+		margin: 0;
 	}
 
+	.back-top {
+		color: var(--muted);
+		font-weight: 500;
+		transition: color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.back-top:hover,
+	.back-top:focus-visible {
+		color: var(--ink);
+	}
 </style>

@@ -18,10 +18,12 @@
 		{ id: 2, name: 'Tailwind', logo: 'https://cdn.simpleicons.org/tailwindcss/38bdf8' },
 		{ id: 3, name: 'Svelte', logo: 'https://cdn.simpleicons.org/svelte/ff3e00' },
 		{ id: 4, name: 'TypeScript', logo: 'https://cdn.simpleicons.org/typescript/3178c6' },
-		{ id: 5, name: 'Solidity', logo: 'https://cdn.simpleicons.org/solidity/a78bfa' },
-		{ id: 6, name: 'Foundry', logo: 'https://cdn.simpleicons.org/ethereum/e4e4e7' },
-		{ id: 7, name: 'C', logo: 'https://cdn.simpleicons.org/c/60a5fa' },
-		{ id: 8, name: 'Arduino', logo: 'https://cdn.simpleicons.org/arduino/00b4bd' }
+		{ id: 5, name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/5fa04e' },
+		{ id: 6, name: 'Supabase', logo: 'https://cdn.simpleicons.org/supabase/3ecf8e' },
+		{ id: 7, name: 'Solidity', logo: 'https://cdn.simpleicons.org/solidity/a78bfa' },
+		{ id: 8, name: 'Foundry', logo: 'https://cdn.simpleicons.org/ethereum/e4e4e7' },
+		{ id: 9, name: 'C', logo: 'https://cdn.simpleicons.org/c/60a5fa' },
+		{ id: 10, name: 'Arduino', logo: 'https://cdn.simpleicons.org/arduino/00b4bd' }
 	];
 
 	const services = [
@@ -47,7 +49,7 @@
 
 			<div class="action-row">
 				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-				<a class="primary-action" href="{base}/docs/AKINTADE TEMILOLUWA AYOMIDE CV.pdf">
+				<a class="primary-action" href="{base}/docs/AKINTADE TEMILOLUWA AYOMIDE CV.pdf" target="_blank" rel="noreferrer">
 					<Download size={17} />
 					My Resume
 				</a>
@@ -89,7 +91,7 @@
 				</div>
 				<figcaption class="portrait-caption">
 					<strong>5+ Years</strong>
-					<span>Web · Blockchain · Systems</span>
+					<span>Web · Blockchain · Systems · Embedded</span>
 				</figcaption>
 			</figure>
 		</div>
@@ -99,13 +101,12 @@
 		<div class="about-copy">
 			<h2>About me</h2>
 			<p>
-				I have spent the last 5+ years building software across the stack — from polished web
-				experiences to smart contract and onchain product work, low-level systems, and embedded
-				prototypes.
+				I have spent the last 5+ years building software across the stack - from full-stack web
+				apps and interactive circuit simulations to smart contracts, onchain developer tooling,
+				low-level systems, and embedded prototypes.
 			</p>
 			<p>
-				My stack spans React, Next.js, TailwindCSS, Svelte, TypeScript, Solidity, Foundry, C, and
-				Arduino. I enjoy turning ambitious ideas into real, usable products that work in the wild.
+				I enjoy turning ambitious ideas into real, usable products that work in the wild.
 			</p>
 		</div>
 
@@ -288,23 +289,24 @@
 
 	.portrait-caption {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: baseline;
 		justify-content: space-between;
-		gap: 0.75rem;
+		gap: 0.35rem 0.65rem;
 		padding: 0.8rem 0.35rem 0.25rem;
 	}
 
 	.portrait-caption strong {
 		font-family: var(--font-mono);
 		font-variant-numeric: tabular-nums;
-		font-size: 0.92rem;
+		font-size: 0.9rem;
 		font-weight: 600;
 		color: var(--ink);
 		white-space: nowrap;
 	}
 
 	.portrait-caption span {
-		font-size: 0.8rem;
+		font-size: 0.76rem;
 		color: var(--muted);
 		text-align: right;
 	}
