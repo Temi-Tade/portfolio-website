@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
 	<url>
 		<loc>https://temi-tade.github.io/portfolio-website/</loc>
+		<lastmod>2026-11-27</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>1.0</priority>
+		<image:image>
+			<image:loc>https://temi-tade.github.io/portfolio-website/images/temiloluwa-peerlist.jpg</image:loc>
+			<image:title>Temiloluwa Akintade - Software Developer</image:title>
+		</image:image>
+		<image:image>
+			<image:loc>https://temi-tade.github.io/portfolio-website/images/shiptok.png</image:loc>
+			<image:title>ShipTok - Maker Build Discovery Platform</image:title>
+		</image:image>
+		<image:image>
+			<image:loc>https://temi-tade.github.io/portfolio-website/images/ohm-e.png</image:loc>
+			<image:title>Ohm-E - Interactive Circuit Simulator</image:title>
+		</image:image>
+		<image:image>
+			<image:loc>https://temi-tade.github.io/portfolio-website/images/riveth.png</image:loc>
+			<image:title>RivETH - Ethereum Smart Contract Infrastructure</image:title>
+		</image:image>
+		<image:image>
+			<image:loc>https://temi-tade.github.io/portfolio-website/images/onekey-classic-1s.jpg</image:loc>
+			<image:title>OneKey Classic 1S - Official Hardware Partner Drop</image:title>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://temi-tade.github.io/portfolio-website/llms.txt</loc>
+		<lastmod>2026-11-27</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://temi-tade.github.io/portfolio-website/llms-full.txt</loc>
+		<lastmod>2026-11-27</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.7</priority>
 	</url>
 </urlset>

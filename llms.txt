@@ -1,0 +1,43 @@
+# Temiloluwa Akintade
+
+> Software developer with 5+ years of experience building web applications, blockchain products, smart contracts, systems software, and embedded tools.
+
+## Overview & Resume
+
+- [Portfolio Homepage](https://temi-tade.github.io/portfolio-website/): Main portfolio showcasing projects, spotlights, technical writing, and contact links.
+- [Full AI Agent Dossier](/llms-full.txt): Complete plain-Markdown reference with project details, stack, partnerships, spotlights, and articles.
+- [Resume (PDF)](/docs/AKINTADE%20TEMILOLUWA%20AYOMIDE%20CV.pdf): Curriculum Vitae for Temiloluwa Akintade.
+
+## Featured Projects
+
+- [ShipTok](https://shiptok-app.vercel.app): Social discovery platform for makers and builders to share builds, explore trending projects, and connect with creators. Stack: Next.js, TypeScript, Supabase, Tailwind CSS.
+- [Ohm-E](https://github.com/Temi-Tade/Ohm-E): Interactive browser-based circuit simulator with a component library, real-time current flow, voltage coloring, and oscilloscope. Stack: React, TypeScript, Tailwind CSS.
+- [RivETH](https://temi-tade.github.io/RivETHDocs) ([GitHub](https://github.com/Temi-Tade/RivETH)): Open-source Ethereum smart contract infrastructure for deploying and interacting with smart contracts (Alchemy-listed). Stack: JavaScript, Node.js, Hardhat.
+- [qodon](https://github.com/Temi-Tade/qodon): CLI-based genomics and bioinformatics tool written in C.
+- [Medusa](https://temi-tade.github.io/medusa) ([GitHub](https://github.com/Temi-Tade/medusa)): Client-side password-based file encryption tool with lossless decryption. Stack: JavaScript.
+- [Skaylar](https://temi-tade.github.io/Skaylar) ([GitHub](https://github.com/Temi-Tade/Skaylar)): Tool for analyzing and visualizing first-digit distributions using Benford's Law. Stack: JavaScript.
+
+## Spotlights & Collaborations
+
+- [Coinpedia Ethereum Builder Spotlight](https://coinpedia.org): Featured builder spotlight covering Temiloluwa Akintade's path to building Ethereum developer tools.
+- [CoderLegion Developer Spotlight Interview with Tom Smith](https://youtu.be/RZbiTxeRFCg?si=RffGqBimDspATWG4): Video interview on systems programming, Web3 infrastructure, RivETH, and developer workflows.
+- [OneKey Official Partner Shop](https://onekey.so/r/TEMI0x0/shop): Official hardware wallet collaboration, including the OneKey Classic 1S hardware partner drop, plus [Perps](https://app.onekey.so/r/TEMI0x0/app/perps), [Swap](https://app.onekey.so/r/TEMI0x0/app/swap), and [DeFi](https://app.onekey.so/r/TEMI0x0/app/defi) referral links.
+
+## Technical Writing
+
+- [I built Medusa - A lossless password-based file encryption tool](https://dev.to/js_cipher/i-built-medusa-a-lossless-password-based-file-encryption-tool-dip) (DEV Community, Aug 29, 2026)
+- [Are computers truly random? How chaos powers randomness.](https://dev.to/js_cipher/are-computers-truly-random-how-chaos-powers-randomness-4d93) (DEV Community, Jul 15, 2026)
+- [Under the Hood: How Hardware Wallets Keep Your Crypto Safe (Even Over USB and Bluetooth)](https://coderlegion.com/20141/how-do-web3-hardware-wallets-work) (CoderLegion)
+- [Why I Built RivETH: A Bare-Metal Toolkit for Ethereum Devs](https://coderlegion.com/12311/why-i-built-riveth-a-bare-metal-toolkit-for-ethereum-devs) (CoderLegion)
+
+## Contact & Profiles
+
+- Email: akintadetemi19@gmail.com
+- [GitHub](https://github.com/Temi-Tade)
+- [LinkedIn](https://linkedin.com/in/temiloluwa-akintade-4b6798254)
+- [X (Twitter)](https://x.com/Temi_tade2805)
+- [Discord](https://discord.com/users/1061727196953190440)
+- [Dev.to](https://dev.to/js_cipher)
+- [Medium](https://medium.com/@temi_lolu0x0)
+- [CoderLegion](https://coderlegion.com/user/temi_0x0)
+- [Peerlist](https://peerlist.io/temi_lolu)
