@@ -68,7 +68,8 @@
 
 	<ul class="articles-grid">
 		{#each articles as article (article.id)}
-			<li class="article-card">
+			<li>
+				<article class="article-card">
 				<div class="article-meta">
 					<span>{article.publication}</span>
 					{#if article.published}
@@ -83,6 +84,7 @@
 					Read article
 					<ArrowUpRight size={16} />
 				</a>
+				</article>
 			</li>
 		{/each}
 	</ul>
@@ -146,10 +148,15 @@
 		list-style: none;
 	}
 
+	.articles-grid > li {
+		display: flex;
+	}
+
 	.article-card {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
+		width: 100%;
 		padding: 1.45rem;
 		border: 1px solid var(--border);
 		border-radius: 0.9rem;

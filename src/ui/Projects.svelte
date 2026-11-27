@@ -158,7 +158,8 @@
 
 	<ul class="projects-grid">
 		{#each projects as project (project.id)}
-			<li class="project-card">
+			<li>
+				<article class="project-card">
 				<button
 					type="button"
 					class="image-button"
@@ -242,6 +243,7 @@
 						</a>
 					</div>
 				</div>
+				</article>
 			</li>
 		{/each}
 	</ul>
@@ -315,9 +317,14 @@
 		padding: 0;
 	}
 
+	.projects-grid > li {
+		display: flex;
+	}
+
 	.project-card {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
 		border: 1px solid var(--border);
 		border-radius: 0.9rem;
 		background: var(--surface);

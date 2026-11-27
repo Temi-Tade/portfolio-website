@@ -46,8 +46,8 @@
 	});
 </script>
 
-<section class="topbar">
-	<header class="nav-shell">
+<header class="topbar">
+	<div class="nav-shell">
 		<a href="#top" class="brand" aria-label="Temiloluwa home page">
 			<img src="{base}/images/TEEE.png" alt="Temiloluwa" />
 		</a>
@@ -85,13 +85,13 @@
 				{/if}
 			</button>
 		</div>
-	</header>
+	</div>
 	<div
 		class="reading-progress"
 		aria-hidden="true"
 		style:transform={`scaleX(${readProgress})`}
 	></div>
-</section>
+</header>
 
 <style>
 	.topbar {

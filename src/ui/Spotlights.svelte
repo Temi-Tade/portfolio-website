@@ -103,7 +103,7 @@
 
 	<div class="spotlights-grid">
 		{#each spotlights as item (item.id)}
-			<div class="spotlight-card">
+			<article class="spotlight-card">
 				<button
 					type="button"
 					class="image-button"
@@ -146,7 +146,7 @@
 						</a>
 					</div>
 				</div>
-			</div>
+			</article>
 		{/each}
 	</div>
 

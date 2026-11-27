@@ -1,0 +1,107 @@
+# Temiloluwa Akintade - Software Developer (Full Portfolio Dossier)
+
+> Software developer with 5+ years of experience building products across web, blockchain, systems, and embedded spaces. Focused on shipping reliable software that balances product thinking, engineering quality, and real-world usability.
+
+## Identity & Contact
+
+- **Full Name**: Temiloluwa Akintade
+- **Role**: Software Developer
+- **Experience**: 5+ years (Web, Blockchain, Systems, Embedded)
+- **Email**: mailto:akintadetemi19@gmail.com
+- **Resume PDF**: /docs/AKINTADE TEMILOLUWA AYOMIDE CV.pdf
+- **GitHub**: https://github.com/Temi-Tade
+- **LinkedIn**: https://linkedin.com/in/temiloluwa-akintade-4b6798254
+- **X (Twitter)**: https://x.com/Temi_tade2805
+- **Discord**: https://discord.com/users/1061727196953190440
+- **Dev.to**: https://dev.to/js_cipher
+- **Medium**: https://medium.com/@temi_lolu0x0
+- **CoderLegion**: https://coderlegion.com/user/temi_0x0
+- **Peerlist**: https://peerlist.io/temi_lolu
+
+## Engineering Disciplines & Core Technologies
+
+- **Disciplines**:
+  - Web Application Development
+  - Smart Contract Development & dApp Integration
+  - Systems & Embedded Software Development
+- **Core Technologies**: React, Next.js, Tailwind CSS, Svelte, TypeScript, Node.js, Supabase, Solidity, Hardhat, Foundry, C, Arduino.
+
+## Featured Projects
+
+### 1. ShipTok
+- **Live URL**: https://shiptok-app.vercel.app
+- **Category**: Web App, Social, Makers, Discovery
+- **Tech Stack**: Next.js, TypeScript, Supabase, Tailwind CSS
+- **Summary**: A social discovery platform for makers and builders to share builds, explore trending projects, and connect with creators.
+
+### 2. Ohm-E
+- **Repository**: https://github.com/Temi-Tade/Ohm-E
+- **Category**: Electronics, Simulation, Interactive, Web App
+- **Tech Stack**: React, TypeScript, Tailwind CSS
+- **Summary**: An interactive browser-based circuit simulator featuring a components library, real-time current flow animation, voltage coloring, and an oscilloscope.
+
+### 3. RivETH
+- **Live Documentation**: https://temi-tade.github.io/RivETHDocs
+- **Repository**: https://github.com/Temi-Tade/RivETH
+- **Category**: Ethereum, Smart Contracts, Open Source, Dev Tools
+- **Tech Stack**: JavaScript, Node.js, Hardhat
+- **Summary**: An open-source Ethereum smart contract infrastructure for deploying and interacting with smart contracts locally. Listed by Alchemy.
+
+### 4. qodon
+- **Repository**: https://github.com/Temi-Tade/qodon
+- **Category**: CLI, Genomics, Bioinformatics, Systems
+- **Tech Stack**: C
+- **Summary**: A CLI-based genomics tool written in C.
+
+### 5. Medusa
+- **Live URL**: https://temi-tade.github.io/medusa
+- **Repository**: https://github.com/Temi-Tade/medusa
+- **Category**: Encryption, Security, File Management
+- **Tech Stack**: JavaScript
+- **Summary**: A client-side password-based file encryption tool with lossless decryption.
+
+### 6. Skaylar
+- **Live URL**: https://temi-tade.github.io/Skaylar
+- **Repository**: https://github.com/Temi-Tade/Skaylar
+- **Category**: Data Analysis, Visualization, Benford's Law, Statistics
+- **Tech Stack**: JavaScript
+- **Summary**: A tool for analyzing and visualizing first-digit distributions using Benford's Law.
+
+## Spotlights, Interviews & Official Collaborations
+
+### Coinpedia Ethereum Builder Spotlight
+- **Publication**: Coinpedia (https://coinpedia.org)
+- **Summary**: Featured builder spotlight highlighting Temiloluwa Akintade's journey from learning web development on a mother's phone to creating tools for the Ethereum developer ecosystem.
+
+### CoderLegion Developer Spotlight Interview with Tom Smith
+- **Publication**: CoderLegion / YouTube (https://youtu.be/RZbiTxeRFCg?si=RffGqBimDspATWG4)
+- **Summary**: In-depth video interview discussing systems programming, Web3 infrastructure, building RivETH, and developer workflows.
+
+### OneKey Official Collaboration & Hardware Partner Drop
+- **Hardware Spotlight**: OneKey Classic 1S - shipped by OneKey as part of the collaboration, an open-source hardware wallet built for secure multi-chain cold storage, offline transaction signing, and Web3 workflows.
+- **Official Shop Referral**: https://onekey.so/r/TEMI0x0/shop
+- **Trade Perps Referral**: https://app.onekey.so/r/TEMI0x0/app/perps
+- **Token Swap Referral**: https://app.onekey.so/r/TEMI0x0/app/swap
+- **DeFi Access Referral**: https://app.onekey.so/r/TEMI0x0/app/defi
+
+## Articles & Technical Writing
+
+1. **I built Medusa - A lossless password-based file encryption tool**
+   - Publication: DEV Community | Published: Aug 29, 2026
+   - URL: https://dev.to/js_cipher/i-built-medusa-a-lossless-password-based-file-encryption-tool-dip
+   - Summary: Overview of Medusa, an open-source client-side file encryption tool built for lossless decryption.
+
+2. **Are computers truly random? How chaos powers randomness.**
+   - Publication: DEV Community | Published: Jul 15, 2026
+   - URL: https://dev.to/js_cipher/are-computers-truly-random-how-chaos-powers-randomness-4d93
+   - Summary: Exploration of how computers generate randomness and the role chaos plays in the process.
+
+3. **Under the Hood: How Hardware Wallets Keep Your Crypto Safe (Even Over USB and Bluetooth)**
+   - Publication: CoderLegion
+   - URL: https://coderlegion.com/20141/how-do-web3-hardware-wallets-work
+   - Summary: Technical breakdown of how secure elements and constrained USB/Bluetooth protocols sign transactions without exposing private keys.
+
+4. **Why I Built RivETH: A Bare-Metal Toolkit for Ethereum Devs**
+   - Publication: CoderLegion
+   - URL: https://coderlegion.com/12311/why-i-built-riveth-a-bare-metal-toolkit-for-ethereum-devs
+   - Summary: Background on building a lightweight, browser-based Ethereum toolkit for compiling, deploying, and interacting with smart contracts locally.
